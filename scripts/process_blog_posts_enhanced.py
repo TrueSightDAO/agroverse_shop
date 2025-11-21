@@ -20,17 +20,17 @@ POST_IMAGES_DIR = BASE_DIR / "assets" / "images" / "blog-posts"
 
 # URL to filename mapping - mapping URLs to actual file names
 URL_TO_FILENAME = {
-    "the-heart-of-brazilian-cacao-bahia-and-amazon-origins": None,
-    "unveiling-cacao-bean-flavor-profiles-insights-from-global-tasting-tools-and-brazilian-expertise": None,
-    "okanogan-regenerative-cacao-journey": None,
-    "vote-for-the-artwork-on-the-first-series-of-our-2024-limited-edition-paulo-s-farm-cacao-collection": None,
-    "ceremonial-cacao-and-the-art-of-being-from-biohacking-to-presence": None,
-    "the-connection-between-wildfires-and-climate-change-a-growing-global-crisis": None,
-    "agroverse-and-the-center-sf-a-partnership-rooted-in-regeneration-and-community": None,
-    "trends-driving-deforestation-in-the-amazon-rainforest-and-how-agroforestry-can-reverse-them": None,
+    "the-heart-of-brazilian-cacao-bahia-and-amazon-origins": "The Heart of Brazilian Cacao_ Bahia and Amazon Origins",
+    "unveiling-cacao-bean-flavor-profiles-insights-from-global-tasting-tools-and-brazilian-expertise": "Unveiling Cacao Bean Flavor Profiles_ Insights from Global Tasting Tools and Brazilian Expertise",
+    "okanogan-regenerative-cacao-journey": None,  # Not found in current files
+    "vote-for-the-artwork-on-the-first-series-of-our-2024-limited-edition-paulo-s-farm-cacao-collection": "Vote for the Artwork on the First Series of Our 2024 Limited Edition Paulo's Farm Ceremonial Cacao Collection!",
+    "ceremonial-cacao-and-the-art-of-being-from-biohacking-to-presence": "ceremonial-cacao-and-the-art-of-being-from-biohacking-to-presence",
+    "the-connection-between-wildfires-and-climate-change-a-growing-global-crisis": "The Connection Between Wildfires and Climate Change_ A Growing Global Crisis",
+    "agroverse-and-the-center-sf-a-partnership-rooted-in-regeneration-and-community": "Agroverse and The Center SF_ A Partnership Rooted in Regeneration and Community",
+    "trends-driving-deforestation-in-the-amazon-rainforest-and-how-agroforestry-can-reverse-them": "Trends Driving Deforestation in the Amazon Rainforest and How Agroforestry Can Reverse Them",
     "agroverse-partners-with-green-gulch-zen-monastery-to-offer-regenerative-cacao-nibs-to-marin-county-c": "Agroverse Partners with Green Gulch Zen Monastery to Offer Regenerative Amazonian Cacao Nibs to Marin County Community",
     "how-stem-cells-regenerate-with-regular-cacao-consumption": "How Stem Cells Regenerate with Regular Cacao Consumption",
-    "agroverse-partners-with-mestre-bico-duro-to-bring-capoeira-fitness-and-cacao-circle-gatherings-to-th": None,
+    "agroverse-partners-with-mestre-bico-duro-to-bring-capoeira-fitness-and-cacao-circle-gatherings-to-th": "Agroverse Partners with Mestre Bico Duro to Bring Capoeira Fitness and Cacao Circle Gatherings to the USA",
     "the-joy-of-cacao-circles-connections-and-community": "The Joy of Cacao Circles_ Connections and Community",
     "understanding-cabruca-a-traditional-agroforestry-practice-for-amazonian-rainforest-conservation": "Understanding Cabruca_ A Traditional Agroforestry Practice for Amazonian Rainforest Conservation"
 }
@@ -55,15 +55,39 @@ def find_blog_file(url_slug, preferred_filename=None):
             if file.stem.lower().replace('_', ' ') == preferred_filename.lower().replace('_', ' '):
                 return file
     
-    # Try to match by slug in URL
+    # Try to match by slug in URL - use a scoring system to find best match
     slug_keywords = url_slug.replace('-', ' ').split()
     
-    # Search in existing files
+    # Skip "Blog _ Agroverse.html" - it's the listing page, not a post
+    best_match = None
+    best_score = 0
+    
     for file in RAW_BLOGS_DIR.glob("*.html"):
-        file_stem_lower = file.stem.lower()
-        # Check if any keywords match
-        if any(keyword in file_stem_lower for keyword in slug_keywords if len(keyword) > 3):
-            return file
+        # Skip the blog listing page
+        if "Blog _ Agroverse" in file.stem:
+            continue
+            
+        file_stem_lower = file.stem.lower().replace('_', ' ').replace(':', ' ').replace('!', '')
+        
+        # Score based on matching keywords
+        score = 0
+        matched_keywords = 0
+        for keyword in slug_keywords:
+            if len(keyword) > 3 and keyword in file_stem_lower:
+                score += len(keyword)  # Longer matches are better
+                matched_keywords += 1
+        
+        # Prefer files where most keywords match
+        if matched_keywords > 0:
+            score = score * (matched_keywords / len(slug_keywords))
+        
+        if score > best_score:
+            best_score = score
+            best_match = file
+    
+    # Only return if we found a reasonably good match (at least 30% keyword match)
+    if best_match and best_score > 0:
+        return best_match
     
     return None
 
@@ -183,7 +207,7 @@ def extract_blog_content(html_file_path):
     
     # Extract title
     title = None
-    if soup.title:
+    if soup.title and soup.title.string:
         title = soup.title.string.strip()
         # Remove " | Agroverse" suffix if present
         title = re.sub(r'\s*\|\s*Agroverse\s*$', '', title)
@@ -228,31 +252,69 @@ def extract_blog_content(html_file_path):
     # Extract main content - look for Wix blog post content
     content_soup = None
     
-    # Try various selectors for Wix blog content
-    content_selectors = [
-        '[data-testid*="richText"]',
-        '[class*="rich-text"]',
-        '[class*="blog-post-content"]',
-        '[class*="post-content"]',
-        'article',
-        '[class*="blog"]',
-    ]
+    # First, try to find article tags and pick the one with the most substantial content
+    articles = soup.find_all('article')
+    if articles:
+        # Find the article with the most content (excluding nav/footer articles)
+        main_article = None
+        max_content_length = 0
+        
+        for article in articles:
+            article_text = article.get_text().strip()
+            # Skip if it's clearly navigation or footer content
+            if any(skip in article_text.lower()[:200] for skip in ['follow us', 'all posts', 'search', 'comments']):
+                continue
+            
+            # If this article has substantial content and matches the title
+            if len(article_text) > max_content_length and len(article_text) > 500:
+                # Also check if it contains the blog title (if we have it)
+                if not title or title.lower().split()[0] in article_text.lower():
+                    main_article = article
+                    max_content_length = len(article_text)
+        
+        # If we found a main article, use it
+        if main_article:
+            content_soup = BeautifulSoup(str(main_article), 'html.parser')
+            print(f"    Found main article with {max_content_length} characters of content")
     
-    for selector in content_selectors:
-        content_elem = soup.select_one(selector)
-        if content_elem:
-            content_soup = BeautifulSoup(str(content_elem), 'html.parser')
-            break
+    # If no article found, try other selectors (but be more selective)
+    if not content_soup:
+        # Try to find rich text elements, but exclude navigation/footer ones
+        rich_text_elems = soup.select('[data-testid*="richText"], [class*="rich-text"]')
+        for elem in rich_text_elems:
+            elem_text = elem.get_text().strip()
+            # Skip navigation/footer elements
+            if any(skip in elem_text.lower() for skip in ['follow us', 'all posts', 'search']):
+                continue
+            # Use the first element with substantial content
+            if len(elem_text) > 500:
+                content_soup = BeautifulSoup(str(elem), 'html.parser')
+                print(f"    Found rich text element with {len(elem_text)} characters")
+                break
     
-    # If no specific content found, try to get body content
+    # If still no content, try to find the main content area by looking for divs with lots of paragraphs
     if not content_soup:
         body = soup.find('body')
         if body:
-            # Clone body to avoid modifying original
-            content_soup = BeautifulSoup(str(body), 'html.parser')
-            # Remove unwanted elements
-            for tag in content_soup.find_all(['script', 'style', 'nav', 'header', 'footer', 'iframe', 'noscript']):
-                tag.decompose()
+            # Find divs with many paragraphs (likely main content)
+            all_divs = body.find_all('div')
+            main_div = None
+            max_paragraphs = 0
+            
+            for div in all_divs:
+                paragraphs = div.find_all('p')
+                # Skip if it's clearly navigation
+                div_text = div.get_text().strip()[:200].lower()
+                if any(skip in div_text for skip in ['follow us', 'all posts', 'search', 'menu', 'nav']):
+                    continue
+                
+                if len(paragraphs) > max_paragraphs and len(paragraphs) > 5:
+                    main_div = div
+                    max_paragraphs = len(paragraphs)
+            
+            if main_div:
+                content_soup = BeautifulSoup(str(main_div), 'html.parser')
+                print(f"    Found content div with {max_paragraphs} paragraphs")
     
     if not content_soup:
         print(f"    ⚠️  Could not find content")
