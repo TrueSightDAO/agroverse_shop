@@ -108,6 +108,7 @@ nav {
   border-radius: 12px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   margin-bottom: 2rem;
+  overflow: hidden; /* Ensure content doesn't overflow container */
 }
 
 .order-section {
@@ -132,8 +133,10 @@ nav {
 .order-info-row {
   display: flex;
   justify-content: space-between;
+  align-items: flex-start;
   padding: 0.75rem 0;
   border-bottom: 1px solid #f0f0f0;
+  gap: 1rem;
 }
 
 .order-info-row:last-child {
@@ -143,14 +146,20 @@ nav {
 .order-info-label {
   font-weight: 600;
   color: var(--color-text-light);
+  flex-shrink: 0;
+  min-width: 120px;
 }
 
 .order-info-value {
   color: var(--color-primary);
   font-weight: 600;
-  word-break: break-all;
-  max-width: 60%;
+  word-break: break-word;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
   text-align: right;
+  flex: 1;
+  min-width: 0; /* Allows flex item to shrink below content size */
+  padding-left: 1rem; /* Add padding on left to prevent text from touching label */
 }
 
 .order-items {
@@ -404,6 +413,21 @@ nav {
 }
 
 @media (max-width: 768px) {
+  .order-info-row {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .order-info-value {
+    text-align: left;
+    padding-left: 0;
+    word-break: break-all; /* More aggressive breaking on mobile */
+  }
+
+  .order-details {
+    padding: 1.5rem;
+  }
+
   .recent-order-item {
     flex-direction: column;
     align-items: flex-start;

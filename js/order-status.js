@@ -110,71 +110,34 @@
    */
   function displayOrderStatus(order) {
     const container = document.getElementById('order-status-container');
-    if (!container) {
-      console.error('Order status container not found');
-      return;
-    }
+    if (!container) return;
 
-    if (!order) {
-      console.error('Order data is null or undefined');
-      displayError('Order data is missing');
-      return;
-    }
-
-    try {
-      const items = order.items || [];
-      const itemsHtml = items.length > 0 
-        ? items.map(item => {
-            try {
-              const itemName = (item && item.name) ? String(item.name) : 'Product';
-              const itemPrice = item && typeof item.price === 'number' ? item.price : 0;
-              const itemQuantity = item && typeof item.quantity === 'number' ? item.quantity : 1;
-              const itemImage = item && item.image ? String(item.image) : null;
-              
-              return `
-                <div class="order-item">
-                  ${itemImage ? `<img src="${itemImage}" alt="${itemName}" class="order-item-image" />` : ''}
-                  <div class="order-item-content">
-                    <div class="order-item-name">${itemName}</div>
-                    <div class="order-item-details">
-                      <span>Quantity: ${itemQuantity}</span>
-                      <span class="order-item-price">$${(itemPrice * itemQuantity).toFixed(2)}</span>
-                    </div>
-                  </div>
-                </div>
-              `;
-            } catch (itemError) {
-              console.error('Error rendering item:', itemError, item);
-              return '<div class="order-item">Error loading item</div>';
-            }
-          }).join('')
-        : '<div class="order-item">No items found</div>';
-
-      const trackingUrl = order.trackingNumber ? getTrackingUrl(order.trackingNumber) : null;
-      const trackingHtml = order.trackingNumber 
-        ? `
-          <div class="order-tracking">
-            <h3>Tracking Information</h3>
-            <p><strong>Tracking Number:</strong> ${String(order.trackingNumber)}</p>
-            ${trackingUrl ? `<a href="${trackingUrl}" target="_blank" class="tracking-link">Track Package →</a>` : ''}
+    const items = order.items || [];
+    const itemsHtml = items.map(item => `
+      <div class="order-item">
+        ${item.image ? `<img src="${item.image}" alt="${item.name || 'Product'}" class="order-item-image" />` : ''}
+        <div class="order-item-content">
+          <div class="order-item-name">${item.name || 'Product'}</div>
+          <div class="order-item-details">
+            <span>Quantity: ${item.quantity || 1}</span>
+            <span class="order-item-price">$${((item.price || 0) * (item.quantity || 1)).toFixed(2)}</span>
           </div>
-        `
-        : '<p class="order-tracking-note">Tracking information will be available once your order ships.</p>';
+        </div>
+      </div>
+    `).join('');
 
-      const sessionId = order.sessionId ? String(order.sessionId) : 'N/A';
-      const orderDate = order.date ? formatDate(order.date) : 'N/A';
-      const orderStatus = order.status ? String(order.status) : 'Placed';
-      
-      const shippingAddressHtml = order.shippingAddress 
-        ? `
-          <p>${order.shippingAddress.fullName || ''}</p>
-          <p>${order.shippingAddress.address || ''}</p>
-          <p>${order.shippingAddress.city || ''}, ${order.shippingAddress.state || ''} ${order.shippingAddress.zip || ''}</p>
-          <p>${order.shippingAddress.country || 'USA'}</p>
-        `
-        : '<p>N/A</p>';
+    const trackingUrl = getTrackingUrl(order.trackingNumber);
+    const trackingHtml = order.trackingNumber 
+      ? `
+        <div class="order-tracking">
+          <h3>Tracking Information</h3>
+          <p><strong>Tracking Number:</strong> ${order.trackingNumber}</p>
+          ${trackingUrl ? `<a href="${trackingUrl}" target="_blank" class="tracking-link">Track Package →</a>` : ''}
+        </div>
+      `
+      : '<p class="order-tracking-note">Tracking information will be available once your order ships.</p>';
 
-      container.innerHTML = `
+    container.innerHTML = `
       <div class="order-status-header">
         <h1>Order Status</h1>
         <div class="order-status-badge ${getStatusClass(order.status)}">
@@ -187,15 +150,15 @@
           <h2>Order Information</h2>
           <div class="order-info-row">
             <span class="order-info-label">Order Number:</span>
-            <span class="order-info-value">${sessionId}</span>
+            <span class="order-info-value">${order.sessionId || 'N/A'}</span>
           </div>
           <div class="order-info-row">
             <span class="order-info-label">Order Date:</span>
-            <span class="order-info-value">${orderDate}</span>
+            <span class="order-info-value">${formatDate(order.date)}</span>
           </div>
           <div class="order-info-row">
             <span class="order-info-label">Status:</span>
-            <span class="order-info-value">${orderStatus}</span>
+            <span class="order-info-value">${order.status || 'Placed'}</span>
           </div>
         </div>
 
@@ -207,9 +170,32 @@
         </div>
 
         <div class="order-section">
+          <h2>Order Summary</h2>
+          <div class="order-info-row">
+            <span class="order-info-label">Subtotal:</span>
+            <span class="order-info-value">$${(order.subtotal || order.amount || 0).toFixed(2)} ${order.currency || 'USD'}</span>
+          </div>
+          ${order.shippingCost > 0 ? `
+          <div class="order-info-row">
+            <span class="order-info-label">Shipping:</span>
+            <span class="order-info-value">$${(order.shippingCost || 0).toFixed(2)} ${order.currency || 'USD'}</span>
+          </div>
+          ` : ''}
+          <div class="order-info-row" style="border-top: 2px solid #ddd; padding-top: 1rem; margin-top: 0.5rem; font-weight: 700;">
+            <span class="order-info-label">Total:</span>
+            <span class="order-info-value">$${(order.amount || 0).toFixed(2)} ${order.currency || 'USD'}</span>
+          </div>
+        </div>
+
+        <div class="order-section">
           <h2>Shipping Address</h2>
           <div class="shipping-address">
-            ${shippingAddressHtml}
+            ${order.shippingAddress ? `
+              <p>${order.shippingAddress.fullName || ''}</p>
+              <p>${order.shippingAddress.address || ''}</p>
+              <p>${order.shippingAddress.city || ''}, ${order.shippingAddress.state || ''} ${order.shippingAddress.zip || ''}</p>
+              <p>${order.shippingAddress.country || 'USA'}</p>
+            ` : 'N/A'}
           </div>
         </div>
 
@@ -221,13 +207,8 @@
         <a href="${config.baseUrl || '/'}/order-history/" class="cta-button" style="margin-left: 1rem; background-color: var(--color-secondary);">View Order History</a>
       </div>
       
-      ${generateRecentOrdersSection(sessionId)}
+      ${generateRecentOrdersSection(order.sessionId)}
     `;
-    } catch (error) {
-      console.error('Error rendering order status:', error);
-      console.error('Order data:', order);
-      displayError('Error displaying order details: ' + error.message);
-    }
   }
 
   /**

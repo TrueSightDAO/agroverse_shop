@@ -1287,6 +1287,33 @@ function getOrderStatus(sessionId) {
       });
     }
     
+    // Extract pricing breakdown from Stripe session
+    // amount_subtotal = product costs only (before shipping)
+    // amount_total = total including shipping
+    // shipping cost = amount_total - amount_subtotal
+    var amountSubtotal = (stripeSession.amount_subtotal || 0) / 100; // Convert from cents
+    var amountTotal = (stripeSession.amount_total || 0) / 100; // Convert from cents
+    var shippingCost = amountTotal - amountSubtotal;
+    
+    // If we calculated totalAmount from line items, use that for subtotal
+    // and calculate shipping from the difference
+    if (items.length > 0 && totalAmount > 0) {
+      amountSubtotal = totalAmount;
+      // Recalculate total from session (includes shipping)
+      amountTotal = (stripeSession.amount_total || 0) / 100;
+      shippingCost = amountTotal - amountSubtotal;
+    }
+    
+    // Ensure shipping cost is not negative (safety check)
+    if (shippingCost < 0) {
+      shippingCost = 0;
+    }
+    
+    Logger.log('Pricing breakdown:');
+    Logger.log('  Subtotal: $' + amountSubtotal.toFixed(2));
+    Logger.log('  Shipping: $' + shippingCost.toFixed(2));
+    Logger.log('  Total: $' + amountTotal.toFixed(2));
+    
     // Extract shipping address from Stripe
     // Check multiple possible locations for shipping address
     var shippingAddress = null;
@@ -1399,7 +1426,9 @@ function getOrderStatus(sessionId) {
       customerName: customerName,
       customerEmail: customerEmail,
       items: items,
-      amount: totalAmount,
+      amount: amountTotal, // Total including shipping
+      subtotal: amountSubtotal, // Subtotal before shipping
+      shippingCost: shippingCost, // Shipping cost
       currency: (stripeSession.currency && stripeSession.currency.toUpperCase()) || 'USD',
       shippingAddress: shippingAddress,
       trackingNumber: trackingNumber, // Will be added manually by admin to Google Sheet
