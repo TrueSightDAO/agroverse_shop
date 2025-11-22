@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<title>Order Status | Agroverse</title>
+<meta content="View your order status" name="description"/>
+<link href="../assets/images/logo/agroverse-logo.jpeg" rel="icon" type="image/jpeg"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --color-primary: #3b3333;
+  --color-secondary: #4d4d4d;
+  --color-text: #3b3333;
+  --color-text-light: #756F63;
+  --color-bg: #ffffff;
+  --color-bg-light: #f7f7f7;
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'Open Sans', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-text);
+  line-height: 1.6;
+  background-color: var(--color-bg);
+}
+
+header {
+  background-color: var(--color-bg);
+  padding: 1.5rem 2rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+nav {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo img {
+  height: 61px;
+  width: auto;
+}
+
+.order-status-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+}
+
+.order-status-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.order-status-header h1 {
+  font-family: var(--font-heading);
+  font-size: 36px;
+  color: var(--color-primary);
+  margin-bottom: 1rem;
+}
+
+.order-status-badge {
+  display: inline-block;
+  padding: 0.5rem 1.5rem;
+  border-radius: 25px;
+  font-weight: 700;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.status-placed {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.status-processing {
+  background: #cfe2ff;
+  color: #084298;
+}
+
+.status-shipped {
+  background: #d1e7dd;
+  color: #0f5132;
+}
+
+.status-delivered {
+  background: #d4edda;
+  color: #155724;
+}
+
+.order-details {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+}
+
+.order-section {
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #eee;
+}
+
+.order-section:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.order-section h2 {
+  font-family: var(--font-heading);
+  font-size: 24px;
+  color: var(--color-primary);
+  margin-bottom: 1rem;
+}
+
+.order-info-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.order-info-row:last-child {
+  border-bottom: none;
+}
+
+.order-info-label {
+  font-weight: 600;
+  color: var(--color-text-light);
+}
+
+.order-info-value {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.order-items {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.order-item {
+  padding: 1rem;
+  background: var(--color-bg-light);
+  border-radius: 8px;
+}
+
+.order-item-name {
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-bottom: 0.5rem;
+}
+
+.order-item-details {
+  display: flex;
+  justify-content: space-between;
+  color: var(--color-text-light);
+  font-size: 14px;
+}
+
+.order-item-price {
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.shipping-address {
+  color: var(--color-text);
+  line-height: 1.8;
+}
+
+.order-tracking {
+  background: var(--color-bg-light);
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-top: 1rem;
+}
+
+.order-tracking h3 {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  color: var(--color-primary);
+  margin-bottom: 0.75rem;
+}
+
+.tracking-link {
+  display: inline-block;
+  margin-top: 0.75rem;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--color-primary);
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: 600;
+  transition: background-color 0.3s;
+}
+
+.tracking-link:hover {
+  background-color: var(--color-secondary);
+}
+
+.order-tracking-note {
+  color: var(--color-text-light);
+  font-style: italic;
+}
+
+.order-actions {
+  text-align: center;
+}
+
+.cta-button {
+  display: inline-block;
+  padding: 1rem 2.5rem;
+  background-color: var(--color-primary);
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  transition: background-color 0.3s;
+}
+
+.cta-button:hover {
+  background-color: var(--color-secondary);
+}
+
+.order-loading,
+.order-error {
+  text-align: center;
+  padding: 3rem 2rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.loading-spinner {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid var(--color-primary);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 1rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.order-error h2 {
+  font-family: var(--font-heading);
+  font-size: 28px;
+  color: var(--color-primary);
+  margin-bottom: 1rem;
+}
+
+.order-error p {
+  color: var(--color-text-light);
+  margin-bottom: 1rem;
+}
+
+.order-error a {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+</style>
+</head>
+<body>
+<header>
+<nav>
+<a class="logo" href="../index.html">
+<img alt="Agroverse Logo" src="../assets/images/logo/agroverse-logo.jpeg"/>
+</a>
+</nav>
+</header>
+
+<div class="order-status-container">
+<div id="order-status-container">
+<div class="order-loading">
+<div class="loading-spinner"></div>
+<p>Loading order status...</p>
+</div>
+</div>
+</div>
+
+<script src="../js/config.js"></script>
+<script src="../js/order-status.js"></script>
+</body>
+</html>
+
