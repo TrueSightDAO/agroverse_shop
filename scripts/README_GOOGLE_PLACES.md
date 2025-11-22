@@ -61,3 +61,4 @@ Partner locations are stored in `partner_locations.json`. To update:
 - Maps are embedded using Leaflet.js which is free and open-source
 - Each partner page includes a "View on Google Maps" link
 
+

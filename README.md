@@ -63,10 +63,29 @@ To customize the site:
 
 This static site eliminates the $36/month Wix hosting fee. GitHub Pages is free for public repositories!
 
+## Local Development
+
+**Quick Start:**
+```bash
+# Option 1: Use the startup script (recommended)
+./start-local-server.sh
+
+# Option 2: Using npm
+npm install && npm run dev
+
+# Option 3: Using Python
+python3 -m http.server 8000 --bind 127.0.0.1
+```
+
+Then visit: `http://127.0.0.1:8000`
+
+See [docs/LOCAL_DEVELOPMENT.md](./docs/LOCAL_DEVELOPMENT.md) for details.
+
 ## Notes
 
 - All images are stored locally in the `assets/raw/` folder
 - The site uses Google Fonts (Playfair Display and Open Sans)
-- No external dependencies required
-- Works offline once loaded
+- No external dependencies required for static site
+- For checkout functionality, see [docs/SETUP_GUIDE.md](./docs/SETUP_GUIDE.md)
+
 

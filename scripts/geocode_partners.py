@@ -111,3 +111,4 @@ with open(output_file, 'w') as f:
 print(f"\n✅ Saved coordinates to {output_file}")
 print(f"   Successfully geocoded: {sum(1 for p in partner_coordinates.values() if p['lat'] is not None)}/{len(partner_coordinates)} partners")
 
+

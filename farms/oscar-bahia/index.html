@@ -423,7 +423,58 @@
             .logo img {
                 height: 40px;
             }
-        }</style>
+        }
+        
+        /* Post Navigation */
+        .post-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 3rem 0 2rem;
+            padding: 2rem 0;
+            border-top: 2px solid var(--color-bg-light);
+            border-bottom: 2px solid var(--color-bg-light);
+            gap: 2rem;
+        }
+        
+        .nav-item {
+            flex: 1;
+        }
+        
+        .nav-item.nav-next {
+            text-align: right;
+        }
+        
+        .nav-link {
+            display: inline-block;
+            color: var(--color-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: color 0.3s;
+            padding: 0.5rem 0;
+        }
+        
+        .nav-link:hover {
+            color: var(--color-primary);
+        }
+        
+        @media (max-width: 768px) {
+            .post-navigation {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            
+            .nav-item.nav-next {
+                text-align: left;
+            }
+        }
+        
+        
+        .nav-label {
+            font-weight: 600;
+        }
+        </style>
 </head>
 <body>
 <header>
@@ -562,7 +613,8 @@
 <div class="map-container" id="map-oscar"></div>
 <p style="margin-top: 1rem;"><a class="item-link" href="https://www.google.com/maps/search/Bahia,+Brazil" rel="noreferrer" style="display: inline-block;" target="_blank">View on Google Maps</a></p>
 </section>
-<footer id="contact">
+
+<nav class="post-navigation"><div class="nav-item nav-prev"><a class="nav-link" href="../paulo-la-do-sitio-para/">← <span class_="nav-label">Paulo's La do Sitio Farm</span></a></div><div class="nav-item nav-next"><a class="nav-link" href="../fazenda-santa-ana-bahia/"><span class_="nav-label">Fazenda Santa Ana</span> →</a></div></nav><footer id="contact">
 <div class="footer-content">
 <h3 style="font-family: var(--font-heading); font-size: 2rem; margin-bottom: 1rem;">Agroverse</h3>
 <p>Regenerating our Amazon rainforest, One Cacao at a time</p>
