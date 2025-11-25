@@ -768,14 +768,32 @@
             
             .hero {
                 min-height: 400px;
+                height: 100vh;
+                padding: 0; /* Remove padding on mobile to eliminate extra space */
             }
             
             .hero-video {
-                object-fit: contain;
+                object-fit: contain; /* Show full video without cropping */
                 width: 100%;
                 height: 100%;
                 min-width: 100%;
                 min-height: 100%;
+                /* Center the video and reduce vertical space */
+                object-position: center center;
+            }
+            
+            /* Reduce hero height on mobile to minimize letterboxing */
+            @media (max-width: 768px) and (orientation: portrait) {
+                .hero {
+                    height: 60vh; /* Reduce height to minimize top/bottom space */
+                    min-height: 300px;
+                }
+            }
+            
+            @media (max-width: 768px) and (orientation: landscape) {
+                .hero {
+                    height: 100vh; /* Keep full height in landscape */
+                }
             }
             
             .footer-links {
