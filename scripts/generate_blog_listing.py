@@ -356,7 +356,7 @@ def generate_blog_listing_html(posts):
                 <li><a href="../blog/">Blog</a></li>
                 <li><a href="../partners/index.html">Partners</a></li>
                 <li><a href="../index.html#gatherings">Gatherings</a></li>
-                <li><a href="mailto:info@agroverse.shop">Contact</a></li>
+                <li><a href="mailto:community@agroverse.shop">Contact</a></li>
             </ul>
         </nav>
     </header>
