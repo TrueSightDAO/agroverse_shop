@@ -282,7 +282,7 @@
       <div class="order-error">
         <h2>Unable to Load Order</h2>
         <p>${message}</p>
-        <p>Please check your order number and try again, or <a href="mailto:info@agroverse.shop">contact us</a> for assistance.</p>
+        <p>Please check your order number and try again, or <a href="mailto:community@agroverse.shop">contact us</a> for assistance.</p>
         <a href="${config.baseUrl || '/'}" class="cta-button">Return to Home</a>
       </div>
     `;

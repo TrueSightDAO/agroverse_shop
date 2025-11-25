@@ -508,7 +508,7 @@ def generate_event_page(event_data):
                 <li><a href="{depth}index.html#farmers">Farms</a></li>
                 <li><a href="{depth}index.html#shipments">Shipments</a></li>
                 <li><a href="{depth}partners/index.html">Partners</a></li>
-                <li><a href="mailto:info@agroverse.shop">Contact</a></li>
+                <li><a href="mailto:community@agroverse.shop">Contact</a></li>
             </ul>
         </nav>
     </header>
@@ -532,7 +532,7 @@ def generate_event_page(event_data):
         </div>
         
         <div class="event-cta">
-            {f'<a href="{rsvp_url}" target="_blank" rel="noopener noreferrer" class="cta-button">Register for This Event</a>' if rsvp_url else (f'<p style="color: var(--color-text-light); font-style: italic;">This event has passed. Thank you for being part of our community!</p>' if is_past else f'<a href="mailto:info@agroverse.shop?subject=Registration for {title}" class="cta-button">Contact Us About This Event</a>')}
+            {f'<a href="{rsvp_url}" target="_blank" rel="noopener noreferrer" class="cta-button">Register for This Event</a>' if rsvp_url else (f'<p style="color: var(--color-text-light); font-style: italic;">This event has passed. Thank you for being part of our community!</p>' if is_past else f'<a href="mailto:community@agroverse.shop?subject=Registration for {title}" class="cta-button">Contact Us About This Event</a>')}
         </div>
     </section>
     
@@ -548,7 +548,7 @@ def generate_event_page(event_data):
                 <li><a href="{depth}index.html#farmers">Farms</a></li>
                 <li><a href="{depth}index.html#shipments">Shipments</a></li>
                 <li><a href="{depth}partners/index.html">Partners</a></li>
-                <li><a href="mailto:info@agroverse.shop">Contact</a></li>
+                <li><a href="mailto:community@agroverse.shop">Contact</a></li>
             </ul>
             <p style="margin-top: 2rem; opacity: 0.8; font-size: 0.9rem;">&copy; 2024 Agroverse. All rights reserved.</p>
         </div>
