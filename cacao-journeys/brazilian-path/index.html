@@ -573,6 +573,34 @@
         // Sort stops from South to North (by latitude, ascending since we're in Southern Hemisphere)
         const sortedStops = Object.values(BRAZILIAN_PATH_DATA).sort((a, b) => a.lat - b.lat);
         
+        // Calculate day numbers for each stop
+        function calculateDayNumbers() {
+            const daysPerFarm = 2.5;
+            const milesPerDay = 200;
+            let cumulativeDays = 1;
+            const dayNumbers = [];
+            
+            sortedStops.forEach((stop, index) => {
+                const distance = index > 0 
+                    ? calculateDistance(
+                        sortedStops[index - 1].lat, sortedStops[index - 1].lon,
+                        stop.lat, stop.lon
+                    )
+                    : 0;
+                
+                const distanceMiles = kmToMiles(distance);
+                const travelDays = index > 0 ? Math.ceil(distanceMiles / milesPerDay) : 0;
+                const arrivalDay = Math.ceil(cumulativeDays);
+                
+                dayNumbers.push(arrivalDay);
+                cumulativeDays += travelDays + daysPerFarm;
+            });
+            
+            return dayNumbers;
+        }
+        
+        const dayNumbers = calculateDayNumbers();
+        
         // Initialize map
         function initMap() {
             if (sortedStops.length === 0) return;
@@ -609,14 +637,15 @@
             
             // Add markers for each stop
             sortedStops.forEach((stop, index) => {
+                const dayNum = dayNumbers[index];
                 const marker = L.marker([stop.lat, stop.lon])
                     .addTo(map)
-                    .bindPopup(`<b>Stop ${index + 1}</b><br>${stop.name}<br>${stop.location}`);
+                    .bindPopup(`<b>Day ${dayNum}</b><br>${stop.name}<br>${stop.location}`);
                 
-                // Number the markers
+                // Number the markers with day numbers
                 const icon = L.divIcon({
                     className: 'custom-marker',
-                    html: `<div style="background: #3b3333; color: white; border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; font-weight: bold; border: 2px solid white;">${index + 1}</div>`,
+                    html: `<div style="background: #3b3333; color: white; border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; font-weight: bold; border: 2px solid white; font-size: 12px;">${dayNum}</div>`,
                     iconSize: [30, 30],
                     iconAnchor: [15, 15]
                 });
@@ -633,6 +662,7 @@
             if (!stopsList) return;
             
             let totalDistance = 0;
+            const milesPerDay = 200; // Travel speed in Brazil (slower than US)
             let html = '';
             
             sortedStops.forEach((stop, index) => {
@@ -646,6 +676,12 @@
                 totalDistance += distance;
                 
                 const distanceMiles = kmToMiles(distance);
+                
+                // Calculate travel days from previous stop
+                const travelDays = index > 0 ? Math.ceil(distanceMiles / milesPerDay) : 0;
+                
+                // Get arrival day from pre-calculated day numbers
+                const arrivalDay = dayNumbers[index];
                 
                 // Determine image path based on type
                 let imagePath = '';
@@ -672,7 +708,7 @@
                 
                 html += `
                     <div class="stop-item">
-                        <div class="stop-number">${index + 1}</div>
+                        <div class="stop-number">Day ${arrivalDay}</div>
                         <img src="${imagePath}" alt="${stop.name}" class="stop-image" onerror="this.style.display='none';"/>
                         <div class="stop-content">
                             <h3><a href="${stop.url}">${stop.name}</a></h3>
@@ -680,7 +716,7 @@
                             <div class="stop-description">
                                 ${stop.description}
                             </div>
-                            ${index > 0 ? `<span class="stop-distance">${distanceMiles.toFixed(1)} miles from previous stop</span>` : '<span class="stop-distance">Starting point</span>'}
+                            ${index > 0 ? `<span class="stop-distance">${distanceMiles.toFixed(1)} miles from previous stop (${travelDays > 0 ? travelDays + ' day' + (travelDays > 1 ? 's' : '') + ' travel' : 'same day'})</span>` : '<span class="stop-distance">Starting point</span>'}
                             <div><a href="${stop.url}" class="stop-link">Visit ${stop.type === 'farm' ? 'Farm' : 'Partner'} Page</a></div>
                         </div>
                     </div>

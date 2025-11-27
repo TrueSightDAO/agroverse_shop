@@ -556,6 +556,34 @@
             };
         });
         
+        // Calculate day numbers for each stop
+        function calculateDayNumbers() {
+            const daysPerVenue = 1.5;
+            const milesPerDay = 250;
+            let cumulativeDays = 1;
+            const dayNumbers = [];
+            
+            stops.forEach((stop, index) => {
+                const distance = index > 0 
+                    ? calculateDistance(
+                        stops[index - 1].lat, stops[index - 1].lon,
+                        stop.lat, stop.lon
+                    )
+                    : 0;
+                
+                const distanceMiles = kmToMiles(distance);
+                const travelDays = index > 0 ? Math.ceil(distanceMiles / milesPerDay) : 0;
+                const arrivalDay = Math.ceil(cumulativeDays);
+                
+                dayNumbers.push(arrivalDay);
+                cumulativeDays += travelDays + daysPerVenue;
+            });
+            
+            return dayNumbers;
+        }
+        
+        const dayNumbers = calculateDayNumbers();
+        
         // Initialize map
         function initMap() {
             if (stops.length === 0) return;
@@ -592,14 +620,15 @@
             
             // Add markers for each stop
             stops.forEach((stop, index) => {
+                const dayNum = dayNumbers[index];
                 const marker = L.marker([stop.lat, stop.lon])
                     .addTo(map)
-                    .bindPopup(`<b>Stop ${index + 1}</b><br>${stop.name}<br>${stop.location}`);
+                    .bindPopup(`<b>Day ${dayNum}</b><br>${stop.name}<br>${stop.location}`);
                 
-                // Number the markers
+                // Number the markers with day numbers
                 const icon = L.divIcon({
                     className: 'custom-marker',
-                    html: `<div style="background: #3b3333; color: white; border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; font-weight: bold; border: 2px solid white;">${index + 1}</div>`,
+                    html: `<div style="background: #3b3333; color: white; border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; font-weight: bold; border: 2px solid white; font-size: 12px;">${dayNum}</div>`,
                     iconSize: [30, 30],
                     iconAnchor: [15, 15]
                 });
@@ -616,8 +645,6 @@
             if (!stopsList) return;
             
             let totalDistance = 0;
-            let cumulativeDays = 1; // Start on Day 1
-            const daysPerVenue = 1.5; // Average days spent at each venue
             const milesPerDay = 250; // Travel speed in miles per day
             let html = '';
             
@@ -636,11 +663,8 @@
                 // Calculate travel days from previous stop
                 const travelDays = index > 0 ? Math.ceil(distanceMiles / milesPerDay) : 0;
                 
-                // Current day is when you arrive at this venue
-                const arrivalDay = Math.ceil(cumulativeDays);
-                
-                // After visiting this venue, move forward by travel time + venue time
-                cumulativeDays += travelDays + daysPerVenue;
+                // Get arrival day from pre-calculated day numbers
+                const arrivalDay = dayNumbers[index];
                 
                 // Determine image path - try .jpeg first, then .jpg
                 const imageExt = stop.slug === 'hacker-dojo' || stop.slug === 'lumin-earth-apothecary' || stop.slug === 'republic-cafe-and-ming-lounge' ? 'jpeg' : 'jpg';
