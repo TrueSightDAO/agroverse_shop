@@ -29,50 +29,68 @@
         return slugs.sort((a, b) => filtered[b].lat - filtered[a].lat);
     }
     
-    // Get Brazilian Drift order (South to North: Founderhaus, then farms)
-    // This matches the exact order from the Brazilian path page (sorted by latitude ascending)
+    // Get Brazilian Drift order - includes farms, partners, cooperatives, and experiences
+    // This matches the exact order from the Brazilian path page
     function getBrazilianDriftOrder() {
         // Define the exact order matching the Brazilian path page itinerary
-        // Sorted South to North (latitude ascending: -27.4305 to -3.3922222)
         const exactOrder = [
-            'founderhaus',                    // -27.4305 (Florianópolis) - Starting point
-            'fazenda-capelavelha-bahia',      // -14.6173663 (Bahia)
-            'fazenda-santa-ana-bahia',        // -14.3225976 (Bahia)
-            'vivi-jesus-do-deus-itacare',    // -14.324474 (Itacaré, Bahia)
-            'oscar-bahia',                    // -12.9714 (Bahia)
-            'paulo-la-do-sitio-para'          // -3.3922222 (Pará, Amazon) - Northernmost
+            'founderhaus',                    // Partner - Florianópolis
+            'fazenda-capelavelha-bahia',      // Farm - Bahia
+            'fazenda-analuana-bahia',          // Farm - Bahia
+            'fazenda-santa-ana-bahia',        // Farm - Bahia
+            'vivi-jesus-do-deus-itacare',    // Farm - Itacaré, Bahia
+            'oscar-bahia',                    // Farm - Bahia
+            'coopercabruca',                  // Cooperative - Bahia
+            'black-king-ilheus',              // Partner - Ilhéus, Bahia
+            'itacare-cultural-experiences',   // Experience - Itacaré
+            'salvador-colonial-history',      // Experience - Salvador
+            'paulo-la-do-sitio-para',         // Farm - Pará, Amazon
+            'cepotx',                         // Cooperative - Pará
+            'jungle-johnny-amazon-tours',     // Experience - Manaus
+            'cargo-boat-manaus-leticia'       // Experience - Leticia
         ];
         
         return exactOrder;
     }
     
     // Get neighbors in drift order
-    function getDriftNeighbors(currentSlug, isPartner) {
+    // type can be 'partner', 'farm', 'cooperative', or 'experience'
+    function getDriftNeighbors(currentSlug, type) {
         let order = [];
         let journeyUrl = '';
         
-        if (isPartner) {
+        // Determine type if not provided
+        if (typeof type === 'boolean') {
+            // Legacy: boolean indicates isPartner
+            type = type ? 'partner' : 'farm';
+        }
+        
+        if (type === 'partner') {
             // Check if partner is in Pacific West Coast drift
             const pacificOrder = getPacificWestCoastDriftOrder();
             if (pacificOrder.includes(currentSlug)) {
                 order = pacificOrder;
                 journeyUrl = '../../cacao-journeys/pacific-west-coast-path/index.html';
-            } else if (currentSlug === 'founderhaus') {
-                // Founderhaus is in Brazilian drift
-                order = getBrazilianDriftOrder();
-                journeyUrl = '../../cacao-journeys/brazilian-path/index.html';
             } else {
-                // Partner not in any drift - return null
-                return { previous: null, next: null, journeyUrl: null };
+                // Check if in Brazilian drift
+                const brazilianOrder = getBrazilianDriftOrder();
+                if (brazilianOrder.includes(currentSlug)) {
+                    order = brazilianOrder;
+                    journeyUrl = '../../cacao-journeys/brazilian-path/index.html';
+                } else {
+                    return { previous: null, next: null, journeyUrl: null };
+                }
             }
-        } else {
-            // Farm - check if in Brazilian drift
+        } else if (type === 'farm' || type === 'cooperative' || type === 'experience') {
+            // Check if in Brazilian drift
             order = getBrazilianDriftOrder();
             if (order.includes(currentSlug)) {
                 journeyUrl = '../../cacao-journeys/brazilian-path/index.html';
             } else {
                 return { previous: null, next: null, journeyUrl: null };
             }
+        } else {
+            return { previous: null, next: null, journeyUrl: null };
         }
         
         const currentIndex = order.indexOf(currentSlug);
@@ -86,28 +104,29 @@
         let previous = null;
         let next = null;
         
-        if (prevSlug) {
-            if (prevSlug === 'founderhaus') {
-                previous = window.PARTNERS_DATA ? window.PARTNERS_DATA[prevSlug] : null;
-            } else if (window.FARMS_DATA && window.FARMS_DATA[prevSlug]) {
-                // Previous is a farm
-                previous = window.FARMS_DATA[prevSlug];
-            } else if (window.PARTNERS_DATA && window.PARTNERS_DATA[prevSlug]) {
-                // Previous is a partner
-                previous = window.PARTNERS_DATA[prevSlug];
+        // Helper function to get data for a slug
+        function getDataForSlug(slug) {
+            // Check Brazilian path data first (includes all types)
+            if (window.BRAZILIAN_PATH_DATA && window.BRAZILIAN_PATH_DATA[slug]) {
+                return window.BRAZILIAN_PATH_DATA[slug];
             }
+            // Check farms data
+            if (window.FARMS_DATA && window.FARMS_DATA[slug]) {
+                return window.FARMS_DATA[slug];
+            }
+            // Check partners data
+            if (window.PARTNERS_DATA && window.PARTNERS_DATA[slug]) {
+                return window.PARTNERS_DATA[slug];
+            }
+            return null;
+        }
+        
+        if (prevSlug) {
+            previous = getDataForSlug(prevSlug);
         }
         
         if (nextSlug) {
-            if (nextSlug === 'founderhaus') {
-                next = window.PARTNERS_DATA ? window.PARTNERS_DATA[nextSlug] : null;
-            } else if (window.FARMS_DATA && window.FARMS_DATA[nextSlug]) {
-                // Next is a farm
-                next = window.FARMS_DATA[nextSlug];
-            } else if (window.PARTNERS_DATA && window.PARTNERS_DATA[nextSlug]) {
-                // Next is a partner
-                next = window.PARTNERS_DATA[nextSlug];
-            }
+            next = getDataForSlug(nextSlug);
         }
         
         return { previous, next, journeyUrl };

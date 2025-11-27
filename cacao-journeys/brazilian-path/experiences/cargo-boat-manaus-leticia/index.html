@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<!-- SEO Meta Tags -->
+<title>Cargo Boat Journey: Manaus to Leticia | Brazilian Journey Experiences</title>
+<meta content="Complete your Amazon journey with an authentic cargo boat trip upriver from Manaus to Leticia. Multi-day journey on the Amazon River through remote communities and vast rainforest." name="description"/>
+<link href="https://www.agroverse.shop/cacao-journeys/brazilian-path/experiences/cargo-boat-manaus-leticia" rel="canonical"/>
+<!-- Open Graph / Facebook -->
+<meta content="website" property="og:type"/>
+<meta content="https://www.agroverse.shop/cacao-journeys/brazilian-path/experiences/cargo-boat-manaus-leticia" property="og:url"/>
+<meta content="Cargo Boat Journey: Manaus to Leticia | Brazilian Journey Experiences" property="og:title"/>
+<meta content="Multi-day cargo boat journey upriver from Manaus to Leticia on the Amazon River - an authentic river transportation experience." property="og:description"/>
+<meta content="https://www.agroverse.shop/assets/images/experiences/cargo-boat/cargo-on-boat.jpg" property="og:image"/>
+<!-- Twitter -->
+<meta content="summary_large_image" property="twitter:card"/>
+<meta content="https://www.agroverse.shop/cacao-journeys/brazilian-path/experiences/cargo-boat-manaus-leticia" property="twitter:url"/>
+<meta content="Cargo Boat Journey: Manaus to Leticia | Brazilian Journey Experiences" property="twitter:title"/>
+<meta content="Multi-day cargo boat journey upriver from Manaus to Leticia on the Amazon River - an authentic river transportation experience." property="twitter:description"/>
+<meta content="https://www.agroverse.shop/assets/images/experiences/cargo-boat/cargo-on-boat.jpg" property="twitter:image"/>
+<!-- Favicon -->
+<link href="../../../../assets/images/logo/favicon-192x192.jpeg" rel="icon" sizes="192x192" type="image/jpeg"/>
+<link href="../../../../assets/images/logo/favicon-32x32.jpeg" rel="icon" sizes="32x32" type="image/jpeg"/>
+<link href="../../../../assets/images/logo/favicon-32x32.jpeg" rel="shortcut icon" type="image/jpeg"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&amp;family=Open+Sans:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<!-- Leaflet CSS for maps -->
+<link crossorigin="" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" rel="stylesheet"/>
+<style>
+        :root {
+            --color-primary: #3b3333;
+            --color-secondary: #4d4d4d;
+            --color-accent: #fefc8f;
+            --color-text: #3b3333;
+            --color-text-light: #756F63;
+            --color-bg: #ffffff;
+            --color-bg-light: #f7f7f7;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Open Sans', sans-serif;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--font-body);
+            color: var(--color-text);
+            line-height: 1.6;
+            background-color: var(--color-bg);
+        }
+        
+        /* Header */
+        header {
+            background-color: var(--color-bg);
+            padding: 1.5rem 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 61px;
+            width: auto;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--color-text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--color-secondary);
+        }
+        
+        /* Hero Section */
+        .experience-hero {
+            position: relative;
+            min-height: 60vh;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, rgba(59, 51, 51, 0.8) 0%, rgba(77, 77, 77, 0.8) 100%),
+                        url('../../../../assets/images/experiences/cargo-boat/cargo-on-boat.jpg') center center/cover;
+        }
+        
+        /* Photo Gallery */
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+        
+        .photo-item {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .photo-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .photo-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .photo-caption {
+            padding: 1rem;
+            background: var(--color-bg-light);
+            font-size: 0.9rem;
+            color: var(--color-text-light);
+            text-align: center;
+        }
+        
+        .experience-hero-content h1 {
+            font-family: var(--font-heading);
+            font-size: 48px;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8), 0 0 10px rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.4);
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            display: inline-block;
+        }
+        
+        .experience-hero-content p {
+            font-size: 20px;
+            opacity: 0.95;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8), 0 0 10px rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.3);
+            padding: 0.5rem 1.5rem;
+            border-radius: 6px;
+            display: inline-block;
+        }
+        
+        /* Content Sections */
+        .content-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+        
+        .content-section h2 {
+            font-family: var(--font-heading);
+            font-size: 36px;
+            color: var(--color-primary);
+            margin-bottom: 2rem;
+        }
+        
+        .experience-story {
+            font-size: 18px;
+            line-height: 1.8;
+            color: var(--color-text);
+            margin-bottom: 2rem;
+        }
+        
+        .experience-story p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .experience-info {
+            background: var(--color-bg-light);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .experience-info h3 {
+            font-family: var(--font-heading);
+            font-size: 24px;
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+        }
+        
+        .info-row {
+            display: flex;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(59, 51, 51, 0.1);
+        }
+        
+        .info-row:last-child {
+            border-bottom: none;
+        }
+        
+        .info-label {
+            font-weight: 600;
+            color: var(--color-primary);
+            min-width: 150px;
+        }
+        
+        .info-value {
+            color: var(--color-text);
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-top: 2rem;
+            color: var(--color-primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        
+        .back-link::before {
+            content: '← ';
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--color-primary);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .experience-hero-content h1 {
+                font-size: 36px;
+            }
+            
+            .nav-links {
+                gap: 1rem;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+<header>
+<nav>
+<a class="logo" href="../../../../index.html">
+<img alt="Agroverse Logo" src="../../../../assets/images/logo/agroverse-logo.jpeg"/>
+</a>
+<ul class="nav-links">
+<li><a href="../../../../index.html#home">Home</a></li>
+<li><a href="../../../../index.html#mission">Mission</a></li>
+<li><a href="../../../../index.html#products">Products</a></li>
+<li><a href="../../index.html">Cacao Journeys</a></li>
+<li><a href="../../../../index.html#shipments">Shipments</a></li>
+<li><a href="../../../../index.html#gatherings">Gatherings</a></li>
+<li><a href="../../../../blog/">Blog</a></li>
+<li><a href="../../../../order-history/">Order History</a></li>
+<li><a href="../../../../index.html#contact">Contact</a></li>
+</ul>
+</nav>
+</header>
+<section class="experience-hero">
+<div class="experience-hero-content">
+<h1>Cargo Boat Journey: Manaus to Leticia</h1>
+<p>Multi-Day Amazon River Voyage</p>
+</div>
+</section>
+<section class="content-section">
+<h2>About This Experience</h2>
+<div class="experience-story">
+<p>Complete your Amazon journey with an authentic cargo boat trip upriver from Manaus to Leticia, Colombia, located at the border where Brazil, Colombia, and Peru meet. This 7-day journey on the Amazon River offers a unique perspective on river life, passing through remote communities, witnessing the vastness of the rainforest, and experiencing the rhythm of river transportation that has connected Amazonian communities for centuries.</p>
+<p><strong>Life on the River:</strong> Sleep in hammocks on deck, sharing the space with local passengers, cargo, and the gentle sway of the boat. This is how most Amazonian communities travel—slowly, together, with the river as both highway and home. The experience strips away modern conveniences, connecting you to the essential rhythm of river life.</p>
+<p><strong>Remote Communities:</strong> As the boat makes stops along the way, you'll witness the daily life of riverside communities. See how people live in harmony with the river, depending on it for transportation, food, and connection. These brief encounters offer glimpses into a way of life that has persisted for generations.</p>
+<p><strong>The Vastness of the Amazon:</strong> Watch the ever-changing landscape of the world's greatest river unfold before you. The scale is humbling—miles of uninterrupted rainforest, tributaries branching in every direction, and the sense that you're traveling through one of the planet's last great wildernesses.</p>
+<p><strong>Reflection and Connection:</strong> This slow journey allows for deep reflection on the interconnectedness of the Amazon ecosystem. As you travel upriver, consider how the same waters that flow past regenerative cacao farms also flow past communities, cities, and eventually to the ocean. The river connects everything, just as regenerative agriculture connects land, people, and purpose.</p>
+<p><strong>Arrival in Leticia:</strong> Your journey concludes in Leticia, Colombia, where the borders of Brazil, Colombia, and Peru meet. This tri-border region represents the international nature of the Amazon—a shared resource that requires cooperation and care across nations.</p>
+<p>This cargo boat journey is more than transportation—it's a meditation on time, space, and the essential connections that bind us to the natural world. It's a fitting conclusion to a journey that began with innovation in Florianópolis, passed through regenerative farms in Bahia, immersed you in culture, and brought you deep into the heart of the Amazon.</p>
+</div>
+<!-- Photo Gallery -->
+<div class="photo-gallery">
+<div class="photo-item">
+<img alt="Border crossing in Leticia" src="../../../../assets/images/experiences/cargo-boat/border-crossing-leticia.jpg"/>
+<div class="photo-caption">Border crossing in Leticia - the tri-border region where Brazil, Colombia, and Peru meet</div>
+</div>
+<div class="photo-item">
+<img alt="Cargo on the boat to Leticia" src="../../../../assets/images/experiences/cargo-boat/cargo-on-boat.jpg"/>
+<div class="photo-caption">Cargo loaded on the boat during the journey to Leticia</div>
+</div>
+<div class="photo-item">
+<img alt="Food on the boat to Leticia" src="../../../../assets/images/experiences/cargo-boat/food-on-boat.jpg"/>
+<div class="photo-caption">Simple meals shared on board during the multi-day journey</div>
+</div>
+<div class="photo-item">
+<img alt="Small boat hopping on and off boat to Leticia" src="../../../../assets/images/experiences/cargo-boat/small-boat-hopping.jpg"/>
+<div class="photo-caption">Small boats used to hop on and off the cargo boat at stops along the river</div>
+</div>
+<div class="photo-item">
+<img alt="Sunset over the Amazon River" src="../../../../assets/images/experiences/cargo-boat/sunset-amazon-river.jpg"/>
+<div class="photo-caption">Sunset over the Amazon River during the journey to Leticia</div>
+</div>
+<div class="photo-item">
+<img alt="Folks swinging on hammocks on the boat to Leticia" src="../../../../assets/images/experiences/cargo-boat/hammocks-on-boat.jpg"/>
+<div class="photo-caption">Travelers resting in hammocks on deck during the multi-day journey</div>
+</div>
+</div>
+<div class="experience-info">
+<h3>Experience Details</h3>
+<div class="info-row">
+<div class="info-label">Route</div>
+<div class="info-value">Manaus, Brazil → Leticia, Colombia (border with Brazil & Peru)</div>
+</div>
+<div class="info-row">
+<div class="info-label">Duration</div>
+<div class="info-value">7 days</div>
+</div>
+<div class="info-row">
+<div class="info-label">Accommodation</div>
+<div class="info-value">Hammocks on deck (bring your own or rent on board)</div>
+</div>
+<div class="info-row">
+<div class="info-label">Meals</div>
+<div class="info-value">Simple meals available on board, or bring your own supplies</div>
+</div>
+<div class="info-row">
+<div class="info-label">Highlights</div>
+<div class="info-value">River life, Remote communities, Vast rainforest views, Slow travel reflection</div>
+</div>
+<div class="info-row">
+<div class="info-label">Final Destination</div>
+<div class="info-value">Leticia, Colombia (tri-border region with Brazil and Peru)</div>
+</div>
+</div>
+<!-- Location Map Section -->
+<div class="experience-info" style="margin-top: 3rem;">
+<h3>Route Map</h3>
+<div id="map-route" style="width: 100%; height: 400px; border-radius: 12px; margin-bottom: 1rem; border: 2px solid rgba(59, 51, 51, 0.1);"></div>
+<div style="text-align: center;">
+<a href="https://www.google.com/maps/dir/Manaus,+State+of+Amazonas,+Brazil/Leticia,+Amazonas,+Colombia" rel="noreferrer" style="color: var(--color-primary); text-decoration: underline; font-size: 14px;" target="_blank">View Route on Google Maps</a>
+</div>
+</div>
+<!-- Experience Navigation -->
+<div class="experience-navigation" id="experience-navigation">
+<!-- Navigation will be inserted here by JavaScript -->
+</div>
+<a class="back-link" href="../../index.html">Back to Brazilian Journey</a>
+</section>
+<footer id="contact">
+<div class="footer-content">
+<h3 style="font-family: var(--font-heading); font-size: 2rem; margin-bottom: 1rem;">Agroverse</h3>
+<p>Regenerating our Amazon rainforest, One Cacao at a time</p>
+<p>Phone: <a href="tel:4153000019" style="color: white;">415-300-0019</a></p>
+<ul class="footer-links">
+<li><a href="../../../../index.html#home">Home</a></li>
+<li><a href="../../../../index.html#mission">Mission</a></li>
+<li><a href="../../../../index.html#products">Products</a></li>
+<li><a href="../../../../index.html#farmers">Farms</a></li>
+<li><a href="../../../../index.html#shipments">Shipments</a></li>
+<li><a href="../../../../blog/">Blog</a></li>
+<li><a href="../../../../index.html#gatherings">Gatherings</a></li>
+<li><a href="../../../../partners/index.html">Partners</a></li>
+<li><a href="../../index.html">Cacao Journeys</a></li>
+<li><a href="../../../../order-history/">Order History</a></li>
+<li><a href="mailto:community@agroverse.shop">Contact</a></li>
+</ul>
+<p style="margin-top: 2rem; opacity: 0.8; font-size: 0.9rem;">© 2024 Agroverse. All rights reserved.</p>
+</div>
+</footer>
+<!-- Leaflet JS for maps -->
+<script crossorigin="" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+        // Initialize Leaflet map showing route from Manaus to Leticia
+        document.addEventListener('DOMContentLoaded', function() {
+            function initMap() {
+                // Center map between Manaus and Leticia
+                const centerLat = -3.5;
+                const centerLon = -65;
+                
+                const map = L.map('map-route').setView([centerLat, centerLon], 5);
+                
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '© OpenStreetMap contributors',
+                    maxZoom: 19
+                }).addTo(map);
+                
+                // Manaus marker
+                L.marker([-3.1190, -60.0217])
+                    .addTo(map)
+                    .bindPopup('<b>Manaus</b><br>Starting point');
+                
+                // Leticia marker
+                L.marker([-4.2153, -69.9406])
+                    .addTo(map)
+                    .bindPopup('<b>Leticia</b><br>Final destination');
+                
+                // Route polyline
+                L.polyline([
+                    [-3.1190, -60.0217], // Manaus
+                    [-4.2153, -69.9406]  // Leticia
+                ], {
+                    color: '#3b3333',
+                    weight: 4,
+                    opacity: 0.7
+                }).addTo(map);
+            }
+            
+            initMap();
+        });
+        </script>
+<script src="../../../../js/config.js"></script>
+<script src="../../../../js/farms-data.js"></script>
+<script src="../../../../js/partners-data.js"></script>
+<script src="../../../../js/brazilian-path-data.js"></script>
+<script src="../../../../js/drift-navigation.js"></script>
+<script src="../../../../js/experience-navigation.js"></script>
+<link href="../../../../css/journey-navigation.css" rel="stylesheet"/>
+<script src="../../../../js/universal-nav.js"></script>
+<script src="../../../../js/cart.js"></script>
+<script src="../../../../js/cart-ui.js"></script>
+<link href="../../../../css/cart.css" rel="stylesheet"/>
+</body>
+</html>
+

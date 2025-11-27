@@ -14,13 +14,13 @@
 <meta content="https://www.agroverse.shop/farms/paulo-la-do-sitio-para" property="og:url"/>
 <meta content="Paulo's La do Sitio Farm - Pará, Amazon Rainforest | Agroverse" property="og:title"/>
 <meta content="Award-winning cacao farm in the Amazon rainforest of Pará, Brazil. Part of the CEPOTX cooperative." property="og:description"/>
-<meta content="https://www.agroverse.shop/farms/paulo-la-do-sitio-para/assets/images/farms/paulo_profile_photo.jpeg" property="og:image"/>
+<meta content="https://www.agroverse.shop/assets/images/farms/paulo_profile_photo.jpeg" property="og:image"/><meta content="630" property="og:image:height"/><meta content="1200" property="og:image:width"/>
 <!-- Twitter -->
 <meta content="summary_large_image" property="twitter:card"/>
 <meta content="https://www.agroverse.shop/farms/paulo-la-do-sitio-para" property="twitter:url"/>
 <meta content="Paulo's La do Sitio Farm - Pará, Amazon Rainforest | Agroverse" property="twitter:title"/>
 <meta content="Award-winning cacao farm in the Amazon rainforest of Pará, Brazil. Part of the CEPOTX cooperative." property="twitter:description"/>
-<meta content="https://www.agroverse.shop/farms/paulo-la-do-sitio-para/assets/images/farms/paulo_profile_photo.jpeg" property="twitter:image"/>
+<meta content="https://www.agroverse.shop/assets/images/farms/paulo_profile_photo.jpeg" property="twitter:image"/>
 <!-- Favicon -->
 <link href="../../assets/images/logo/favicon-192x192.jpeg" rel="icon" sizes="192x192" type="image/jpeg"/>
 <link href="../../assets/images/logo/favicon-32x32.jpeg" rel="icon" sizes="32x32" type="image/jpeg"/>
@@ -603,8 +603,14 @@
 <div class="map-container" id="map-paulo"></div>
 <p style="margin-top: 1rem;"><a class="item-link" href="https://www.google.com/maps/place/3%C2%B023'32.0%22S+51%C2%B051'09.1%22W/@-29.3170975,-101.1799934,3z/data=!4m4!3m3!8m2!3d-3.3922222!4d-51.8525278!5m1!1e1?entry=ttu&amp;g_ep=EgoyMDI1MDQyOS4wIKXMDSoASAFQAw%3D%3D" rel="noreferrer" style="display: inline-block;" target="_blank">View on Google Maps</a></p>
 </section>
-<div class="farm-navigation" id="farm-navigation"></div>
-<a class="back-link" href="../../cacao-journeys/brazilian-path/index.html">Back to Journey</a><footer id="contact">
+<section class="content-section">
+<!-- Farm Navigation -->
+<div class="farm-navigation" id="farm-navigation">
+<!-- Navigation will be inserted here by JavaScript -->
+</div>
+<a class="back-link" href="../../cacao-journeys/brazilian-path/index.html">Back to Brazilian Journey</a>
+</section>
+<footer id="contact">
 <div class="footer-content">
 <h3 style="font-family: var(--font-heading); font-size: 2rem; margin-bottom: 1rem;">Agroverse</h3>
 <p>Regenerating our Amazon rainforest, One Cacao at a time</p>
@@ -632,12 +638,12 @@
                     setTimeout(initMap, 100);
                     return;
                 }
-                const mapPaulo = L.map('map-paulo').setView([-3.3922222, -51.8525278], 13);
+                const mapPaulo = L.map('map-paulo').setView([-3.392213, -51.85254], 13);
                 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
                     maxZoom: 19
                 }).addTo(mapPaulo);
-                L.marker([-3.3922222, -51.8525278]).addTo(mapPaulo)
+                L.marker([-3.392213, -51.85254]).addTo(mapPaulo)
                     .bindPopup('La do Sitio Farm<br>Pará, Amazon Rainforest, Brazil<br><a href="https://www.google.com/maps/place/3%C2%B023\'32.0%22S+51%C2%B051\'09.1%22W/@-29.3170975,-101.1799934,3z/data=!4m4!3m3!8m2!3d-3.3922222!4d-51.8525278!5m1!1e1?entry=ttu&g_ep=EgoyMDI1MDQyOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noreferrer">View on Google Maps</a>')
                     .openPopup();
             }
@@ -713,6 +719,7 @@
 <script src="../../js/config.js"></script>
 <script src="../../js/farms-data.js"></script>
 <script src="../../js/partners-data.js"></script>
+<script src="../../js/brazilian-path-data.js"></script>
 <script src="../../js/drift-navigation.js"></script>
 <script src="../../js/farm-navigation.js"></script>
 <link href="../../css/farm-navigation.css" rel="stylesheet"/>

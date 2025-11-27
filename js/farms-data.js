@@ -37,6 +37,13 @@ window.FARMS_DATA = {
         lat: -14.324474,
         lon: -39.014201,
         location: 'Itacaré, Bahia, Brazil'
+    },
+    'fazenda-analuana-bahia': {
+        name: 'Fazenda Analuana',
+        slug: 'fazenda-analuana-bahia',
+        lat: -15.691646,
+        lon: -39.295703,
+        location: 'Bahia, Brazil'
     }
 };
 

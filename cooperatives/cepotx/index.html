@@ -29,6 +29,8 @@
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&amp;family=Open+Sans:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<!-- Leaflet CSS for maps -->
+<link crossorigin="" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" rel="stylesheet"/>
 <style>
         :root {
             --color-primary: #3b3333;
@@ -283,6 +285,16 @@
             color: var(--color-secondary);
         }
         
+        /* Map Container */
+        .map-container {
+            width: 100%;
+            height: 400px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin: 2rem 0;
+        }
+        
         @media (max-width: 768px) {
             .cooperative-hero-content h1 {
                 font-size: 32px;
@@ -478,6 +490,10 @@
 <div class="info-label">Practices</div>
 <div class="info-value">Agroforestry, sustainable cultivation, quality control</div>
 </div>
+<div class="info-row">
+<div class="info-label">Social Media</div>
+<div class="info-value"><a href="https://www.instagram.com/cooperativacepotx/" target="_blank" rel="noopener noreferrer" style="color: var(--color-primary); text-decoration: underline;">@cooperativacepotx on Instagram</a></div>
+</div>
 </div>
 </section>
 <section class="content-section">
@@ -506,11 +522,20 @@ Paulo and his wife run La do Sitio, an award-winning cacao farm in the Amazon ra
 </div>
 <div class="farm-link">View Shipment →</div>
 </a>
-</div>
+    </div>
 </section>
-<div class="content-section">
-<a class="back-link" href="../index.html">← Back to All Cooperatives</a>
+<section class="content-section" style="background-color: var(--color-bg-light);">
+<h2>Cooperative Location</h2>
+<div class="map-container" id="map-cepotx"></div>
+<p style="margin-top: 1rem;"><a href="https://www.google.com/maps/place/Ac.+01+-+Sudam+II,+Altamira+-+PA,+68372-061,+Brazil" target="_blank" rel="noreferrer" style="color: var(--color-primary); text-decoration: underline;">View on Google Maps</a></p>
+</section>
+<section class="content-section">
+<!-- Cooperative Navigation -->
+<div class="cooperative-navigation" id="cooperative-navigation">
+<!-- Navigation will be inserted here by JavaScript -->
 </div>
+<a class="back-link" href="../../cacao-journeys/brazilian-path/index.html">Back to Brazilian Journey</a>
+</section>
 <footer id="contact">
 <div class="footer-content">
 <h3 style="font-family: var(--font-heading); font-size: 2rem; margin-bottom: 1rem;">Agroverse</h3>
@@ -532,11 +557,52 @@ Paulo and his wife run La do Sitio, an award-winning cacao farm in the Amazon ra
 </div>
 </footer>
 <script src="../../js/config.js"></script>
+<script src="../../js/farms-data.js"></script>
+<script src="../../js/partners-data.js"></script>
+<script src="../../js/brazilian-path-data.js"></script>
+<script src="../../js/drift-navigation.js"></script>
+<script src="../../js/cooperative-navigation.js"></script>
+<link href="../../css/journey-navigation.css" rel="stylesheet"/>
 <script src="../../js/universal-nav.js"></script>
 <script src="../../js/cart.js"></script>
 <script src="../../js/cart-ui.js"></script>
 <script src="../../js/add-to-cart.js"></script>
 <link href="../../css/cart.css" rel="stylesheet"/>
+<script crossorigin="" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+    // Initialize map for CEPOTX Cooperative (Pará, Brazil)
+    (function() {
+        function initMap() {
+            const mapElement = document.getElementById('map-cepotx');
+            if (!mapElement) {
+                setTimeout(initMap, 100);
+                return;
+            }
+            if (typeof L === 'undefined') {
+                setTimeout(initMap, 100);
+                return;
+            }
+            try {
+                // Pará, Brazil coordinates (approximate center of the state)
+                const mapCepotx = L.map('map-cepotx').setView([-3.2036111, -52.2063889], 13);
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+                    maxZoom: 19
+                }).addTo(mapCepotx);
+                L.marker([-3.2036111, -52.2063889]).addTo(mapCepotx)
+                    .bindPopup('CEPOTX Cooperative<br>Ac. 01 - Sudam II, Altamira - PA, 68372-061, Brazil<br><a href="https://www.google.com/maps/place/Ac.+01+-+Sudam+II,+Altamira+-+PA,+68372-061,+Brazil" target="_blank" rel="noreferrer">View on Google Maps</a>')
+                    .openPopup();
+            } catch (error) {
+                console.error('Error initializing map:', error);
+            }
+        }
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initMap);
+        } else {
+            initMap();
+        }
+    })();
+</script>
 <div class="mobile-menu-overlay"></div><script>
     document.addEventListener('DOMContentLoaded', function() {
         const menuToggle = document.querySelector('.mobile-menu-toggle');
