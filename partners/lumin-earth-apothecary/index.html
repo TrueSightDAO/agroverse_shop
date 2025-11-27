@@ -14,16 +14,16 @@
 <meta content="https://www.agroverse.shop/partners/lumin-earth-apothecary" property="og:url"/>
 <meta content="Lumin Earth Apothecary | Agroverse Partners" property="og:title"/>
 <meta content="Lumin Earth Apothecary is a mother-daughter-owned herbal sanctuary, crystal shop, and house-plant haven in Morro Bay, California." property="og:description"/>
-<meta content="https://www.agroverse.shop/assets/partners/headers/lumin-earth-apothecary-header.jpeg" property="og:image"/>
+<meta content="https://www.agroverse.shop/partners/lumin-earth-apothecary/assets/partners/headers/lumin-earth-apothecary-header.jpeg" property="og:image"/>
 <!-- Twitter -->
 <meta content="summary_large_image" property="twitter:card"/>
 <meta content="https://www.agroverse.shop/partners/lumin-earth-apothecary" property="twitter:url"/>
 <meta content="Lumin Earth Apothecary | Agroverse Partners" property="twitter:title"/>
 <meta content="Lumin Earth Apothecary is a mother-daughter-owned herbal sanctuary, crystal shop, and house-plant haven in Morro Bay, California." property="twitter:description"/>
-<meta content="https://www.agroverse.shop/assets/partners/headers/lumin-earth-apothecary-header.jpeg" property="twitter:image"/>
+<meta content="https://www.agroverse.shop/partners/lumin-earth-apothecary/assets/partners/headers/lumin-earth-apothecary-header.jpeg" property="twitter:image"/>
 <!-- Favicon -->
-<link href="../../assets/images/logo/favicon-192x192.jpeg" rel="icon" type="image/jpeg" sizes="192x192"/>
-<link href="../../assets/images/logo/favicon-32x32.jpeg" rel="icon" type="image/jpeg" sizes="32x32"/>
+<link href="../../assets/images/logo/favicon-192x192.jpeg" rel="icon" sizes="192x192" type="image/jpeg"/>
+<link href="../../assets/images/logo/favicon-32x32.jpeg" rel="icon" sizes="32x32" type="image/jpeg"/>
 <link href="../../assets/images/logo/favicon-32x32.jpeg" rel="shortcut icon" type="image/jpeg"/>
 <!-- Google Fonts -->
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
@@ -402,9 +402,45 @@
             .logo img {
                 height: 40px;
             }
+        }
+        
+        /* Image Gallery */
+        .partner-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .gallery-item {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            height: 400px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--color-bg-light);
+        }
+        
+        .gallery-item img {
+            width: auto;
+            height: 100%;
+            max-width: 100%;
+            display: block;
+            object-fit: contain;
+        }
+        
+        @media (max-width: 768px) {
+            .gallery-item {
+                height: 300px;
+            }
         }</style>
 <!-- Leaflet CSS for maps -->
 <link crossorigin="" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" rel="stylesheet"/>
+<!-- Partner Navigation CSS -->
+<link href="../../css/partner-navigation.css" rel="stylesheet"/>
 </head>
 <body>
 <header>
@@ -439,9 +475,21 @@
 <section class="content-section">
 <h2>About Lumin Earth Apothecary</h2>
 <div class="partner-story">
-<p>Lumin Earth Apothecary is more than just a shop—it's an experience. As a mother-daughter-owned herbal sanctuary, crystal shop, and house-plant haven, they offer a place to nourish your body, mind, and spirit. Within their space, you'll find Lumin's Earths Tea Bar where they craft made-to-order herbal elixirs, tea lattes, and teas for you to sip and enjoy.</p>
-<p>Explore their selection of bulk herbs, high-vibrational crystals, rare houseplants, and their handcrafted line of herbal remedies, including tinctures and tea blends designed to support your well-being. Whether you're there for a cup of tea, the perfect crystal, or to immerse yourself in earth's medicine, Lumin Earth Apothecary invites you to experience the magic of their space.</p>
+<p>Lumin Earth Apothecary is more than just a shop—it's an experience. Owned by mother and daughter Summer and Sierra, this herbal sanctuary, crystal shop, and house-plant haven offers a place to nourish your body, mind, and spirit. Within their space, you'll find Lumin's Earths Tea Bar where Summer and Sierra craft made-to-order herbal elixirs, tea lattes, and teas for you to sip and enjoy.</p>
+<p>Explore their selection of bulk herbs, high-vibrational crystals, rare houseplants, and their handcrafted line of herbal remedies, including tinctures and tea blends designed to support your well-being. Whether you're there for a cup of tea, the perfect crystal, or to immerse yourself in earth's medicine, Summer and Sierra invite you to experience the magic of their space.</p>
 <p>They also offer soul readings and herbal guidance, creating a holistic approach to wellness that aligns perfectly with Agroverse's mission of regenerative, ethically-sourced cacao. Find our regenerative cacao products at their beautiful Morro Bay location.</p>
+</div>
+<!-- Partner Images Gallery -->
+<div class="partner-gallery">
+<div class="gallery-item">
+<img alt="Sitting area in Lumin Earth Apothecary" loading="lazy" src="../../assets/partners/lumin-earth-sitting-area.jpg"/>
+</div>
+<div class="gallery-item">
+<img alt="Cup of ceremonial cacao at Lumin Earth Apothecary" loading="lazy" src="../../assets/partners/lumin-earth-cacao-cup.jpg"/>
+</div>
+<div class="gallery-item">
+<img alt="Summer posing with Agroverse ceremonial cacao bags behind her counter" loading="lazy" src="../../assets/partners/lumin-earth-summer-with-bags.jpg"/>
+</div>
 </div>
 <div class="partner-info">
 <h3>Partner Information</h3>
@@ -451,7 +499,7 @@
 </div>
 <div class="info-row">
 <div class="info-label">Website</div>
-<div class="info-value"><a href="https://www.luminearthapothecary.com/" target="_blank" rel="noopener noreferrer">luminearthapothecary.com</a></div>
+<div class="info-value"><a href="https://www.luminearthapothecary.com/" rel="noopener noreferrer" target="_blank">luminearthapothecary.com</a></div>
 </div>
 <div class="info-row">
 <div class="info-label">Phone</div>
@@ -460,6 +508,10 @@
 <div class="info-row">
 <div class="info-label">Email</div>
 <div class="info-value"><a href="mailto:luminearthapothecary@gmail.com">luminearthapothecary@gmail.com</a></div>
+</div>
+<div class="info-row">
+<div class="info-label">Owners</div>
+<div class="info-value">Summer and Sierra</div>
 </div>
 <div class="info-row">
 <div class="info-label">Status</div>
@@ -473,6 +525,10 @@
 <div style="text-align: center;">
 <a href="https://www.google.com/maps/search/?api=1&amp;query=875+Main+St+Suite+C+Morro+Bay+CA+93442" rel="noreferrer" style="color: var(--color-primary); text-decoration: underline; font-size: 14px;" target="_blank">View on Google Maps</a>
 </div>
+</div>
+<!-- Partner Navigation -->
+<div class="partner-navigation" id="partner-navigation">
+<!-- Navigation will be inserted here by JavaScript -->
 </div>
 <a class="back-link" href="../index.html">Back to All Partners</a>
 </section>
@@ -585,6 +641,9 @@
     });
     </script>
 <script src="../../js/config.js"></script>
+<script src="../../js/partners-data.js"></script>
+<script src="../../js/drift-navigation.js"></script>
+<script src="../../js/partner-navigation.js"></script>
 <script src="../../js/universal-nav.js"></script>
 <script src="../../js/cart.js"></script>
 <script src="../../js/cart-ui.js"></script>
@@ -592,4 +651,3 @@
 <link href="../../css/cart.css" rel="stylesheet"/>
 </body>
 </html>
-

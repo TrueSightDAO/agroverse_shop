@@ -476,6 +476,22 @@
         .nav-label {
             font-weight: 600;
         }
+        
+        .back-link {
+            display: inline-block;
+            margin-top: 2rem;
+            color: var(--color-primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        
+        .back-link::before {
+            content: '← ';
+        }
         </style>
 </head>
 <body>
@@ -488,11 +504,10 @@
 <li><a href="../../index.html#home">Home</a></li>
 <li><a href="../../index.html#mission">Mission</a></li>
 <li><a href="../../index.html#products">Products</a></li>
-<li><a href="../../index.html#farmers">Farms</a></li>
+<li><a href="../../cacao-journeys/index.html">Cacao Journeys</a></li>
 <li><a href="../../index.html#shipments">Shipments</a></li>
-<li><a href="../../blog/">Blog</a></li>
 <li><a href="../../index.html#gatherings">Gatherings</a></li>
-<li><a href="../../partners/index.html">Partners</a></li>
+<li><a href="../../blog/">Blog</a></li>
 <li><a href="../../order-history/">Order History</a></li>
 <li><a href="../../index.html#contact">Contact</a></li>
 </ul>
@@ -616,10 +631,11 @@
 <section class="content-section" style="background-color: var(--color-bg-light);">
 <h2>Farm Location</h2>
 <div class="map-container" id="map-oscar"></div>
-<p style="margin-top: 1rem;"><a class="item-link" href="https://www.google.com/maps/search/Bahia,+Brazil" rel="noreferrer" style="display: inline-block;" target="_blank">View on Google Maps</a></p>
+<p style="margin-top: 1rem;"><a class="item-link" href="https://www.google.com/maps/place/14%C2%B003'09.5%22S+39%C2%B026'17.5%22W/@-14.052624,-39.438206,13z/data=!4m4!3m3!8m2!3d-14.052624!4d-39.438206?entry=ttu" rel="noreferrer" style="display: inline-block;" target="_blank">View on Google Maps</a></p>
 </section>
 
-<nav class="post-navigation"><div class="nav-item nav-prev"><a class="nav-link" href="../paulo-la-do-sitio-para/">← <span class_="nav-label">Paulo's La do Sitio Farm</span></a></div><div class="nav-item nav-next"><a class="nav-link" href="../fazenda-santa-ana-bahia/"><span class_="nav-label">Fazenda Santa Ana</span> →</a></div></nav><footer id="contact">
+<div class="farm-navigation" id="farm-navigation"></div>
+<a class="back-link" href="../../cacao-journeys/brazilian-path/index.html">Back to Journey</a><footer id="contact">
 <div class="footer-content">
 <h3 style="font-family: var(--font-heading); font-size: 2rem; margin-bottom: 1rem;">Agroverse</h3>
 <p>Regenerating our Amazon rainforest, One Cacao at a time</p>
@@ -628,11 +644,10 @@
 <li><a href="../../index.html#home">Home</a></li>
 <li><a href="../../index.html#mission">Mission</a></li>
 <li><a href="../../index.html#products">Products</a></li>
-<li><a href="../../index.html#farmers">Farms</a></li>
+<li><a href="../../cacao-journeys/index.html">Cacao Journeys</a></li>
 <li><a href="../../index.html#shipments">Shipments</a></li>
-<li><a href="../../blog/">Blog</a></li>
 <li><a href="../../index.html#gatherings">Gatherings</a></li>
-<li><a href="../../partners/index.html">Partners</a></li>
+<li><a href="../../blog/">Blog</a></li>
 <li><a href="../../order-history/">Order History</a></li>
 <li><a href="mailto:community@agroverse.shop">Contact</a></li>
 </ul>
@@ -641,21 +656,30 @@
 </footer>
 <script crossorigin="" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
-        // Initialize map for Bahia, Brazil (approximate coordinates)
+        // Initialize map for Bahia, Brazil
         (function() {
             function initMap() {
+                const mapElement = document.getElementById('map-oscar');
+                if (!mapElement) {
+                    setTimeout(initMap, 100);
+                    return;
+                }
                 if (typeof L === 'undefined') {
                     setTimeout(initMap, 100);
                     return;
                 }
-                const mapOscar = L.map('map-oscar').setView([-12.9714, -38.5014], 10);
-                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-                    maxZoom: 19
-                }).addTo(mapOscar);
-                L.marker([-12.9714, -38.5014]).addTo(mapOscar)
-                    .bindPopup('Oscar\'s Farm<br>Bahia, Brazil<br><a href="https://www.google.com/maps/search/Bahia,+Brazil" target="_blank" rel="noreferrer">View on Google Maps</a>')
-                    .openPopup();
+                try {
+                    const mapOscar = L.map('map-oscar').setView([-14.052624, -39.438206], 10);
+                    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+                        maxZoom: 19
+                    }).addTo(mapOscar);
+                    L.marker([-14.052624, -39.438206]).addTo(mapOscar)
+                        .bindPopup('Oscar\'s Farm<br>Bahia, Brazil<br><a href="https://www.google.com/maps/place/14%C2%B003\'09.5%22S+39%C2%B026\'17.5%22W/@-14.052624,-39.438206,13z/data=!4m4!3m3!8m2!3d-14.052624!4d-39.438206?entry=ttu" target="_blank" rel="noreferrer">View on Google Maps</a>')
+                        .openPopup();
+                } catch (error) {
+                    console.error('Error initializing map:', error);
+                }
             }
             if (document.readyState === 'loading') {
                 document.addEventListener('DOMContentLoaded', initMap);
@@ -727,6 +751,11 @@
     });
     </script>
 <script src="../../js/config.js"></script>
+<script src="../../js/farms-data.js"></script>
+<script src="../../js/partners-data.js"></script>
+<script src="../../js/drift-navigation.js"></script>
+<script src="../../js/farm-navigation.js"></script>
+<link href="../../css/farm-navigation.css" rel="stylesheet"/>
 <script src="../../js/universal-nav.js"></script>
 <script src="../../js/cart.js"></script>
 <script src="../../js/cart-ui.js"></script>

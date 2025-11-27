@@ -476,6 +476,22 @@
         .nav-label {
             font-weight: 600;
         }
+        
+        .back-link {
+            display: inline-block;
+            margin-top: 2rem;
+            color: var(--color-primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        
+        .back-link::before {
+            content: '← ';
+        }
         </style>
 </head>
 <body>
@@ -488,11 +504,10 @@
 <li><a href="../../index.html#home">Home</a></li>
 <li><a href="../../index.html#mission">Mission</a></li>
 <li><a href="../../index.html#products">Products</a></li>
-<li><a href="../../index.html#farmers">Farms</a></li>
+<li><a href="../../cacao-journeys/index.html">Cacao Journeys</a></li>
 <li><a href="../../index.html#shipments">Shipments</a></li>
-<li><a href="../../blog/">Blog</a></li>
 <li><a href="../../index.html#gatherings">Gatherings</a></li>
-<li><a href="../../partners/index.html">Partners</a></li>
+<li><a href="../../blog/">Blog</a></li>
 <li><a href="../../order-history/">Order History</a></li>
 <li><a href="../../index.html#contact">Contact</a></li>
 </ul>
@@ -567,7 +582,8 @@
 <p style="margin-top: 1rem;"><a class="item-link" href="https://www.google.com/maps/place/Fazenda+Santa+Ana/@-14.3148028,-39.1604428,12.59z/data=!4m6!3m5!1s0x73930f2cbbe1c23:0x5e46246f566adf69!8m2!3d-14.3225976!4d-39.1061207!16s%2Fg%2F11c6f03rg5?entry=ttu" rel="noreferrer" style="display: inline-block;" target="_blank">View on Google Maps</a></p>
 </section>
 
-<nav class="post-navigation"><div class="nav-item nav-prev"><a class="nav-link" href="../oscar-bahia/">← <span class_="nav-label">Oscar's Farm</span></a></div><div class="nav-item nav-next"><a class="nav-link" href="../fazenda-capelavelha-bahia/"><span class_="nav-label">Fazenda Capelavelha</span> →</a></div></nav><footer id="contact">
+<div class="farm-navigation" id="farm-navigation"></div>
+<a class="back-link" href="../../cacao-journeys/brazilian-path/index.html">Back to Journey</a><footer id="contact">
 <div class="footer-content">
 <h3 style="font-family: var(--font-heading); font-size: 2rem; margin-bottom: 1rem;">Agroverse</h3>
 <p>Regenerating our Amazon rainforest, One Cacao at a time</p>
@@ -576,11 +592,10 @@
 <li><a href="../../index.html#home">Home</a></li>
 <li><a href="../../index.html#mission">Mission</a></li>
 <li><a href="../../index.html#products">Products</a></li>
-<li><a href="../../index.html#farmers">Farms</a></li>
+<li><a href="../../cacao-journeys/index.html">Cacao Journeys</a></li>
 <li><a href="../../index.html#shipments">Shipments</a></li>
-<li><a href="../../blog/">Blog</a></li>
 <li><a href="../../index.html#gatherings">Gatherings</a></li>
-<li><a href="../../partners/index.html">Partners</a></li>
+<li><a href="../../blog/">Blog</a></li>
 <li><a href="../../order-history/">Order History</a></li>
 <li><a href="mailto:community@agroverse.shop">Contact</a></li>
 </ul>
@@ -675,6 +690,11 @@
     });
     </script>
 <script src="../../js/config.js"></script>
+<script src="../../js/farms-data.js"></script>
+<script src="../../js/partners-data.js"></script>
+<script src="../../js/drift-navigation.js"></script>
+<script src="../../js/farm-navigation.js"></script>
+<link href="../../css/farm-navigation.css" rel="stylesheet"/>
 <script src="../../js/universal-nav.js"></script>
 <script src="../../js/cart.js"></script>
 <script src="../../js/cart-ui.js"></script>

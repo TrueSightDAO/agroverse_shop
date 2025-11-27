@@ -14,16 +14,16 @@
 <meta content="https://www.agroverse.shop/partners/founderhaus" property="og:url"/>
 <meta content="Founder Haus | Agroverse Partners" property="og:title"/>
 <meta content="Founder Haus partner location in Brazil." property="og:description"/>
-<meta content="https://www.agroverse.shop/assets/partners/headers/founderhaus-header.jpg" property="og:image"/>
+<meta content="https://www.agroverse.shop/partners/founderhaus/assets/partners/headers/founderhaus-header.jpg" property="og:image"/>
 <!-- Twitter -->
 <meta content="summary_large_image" property="twitter:card"/>
 <meta content="https://www.agroverse.shop/partners/founderhaus" property="twitter:url"/>
 <meta content="Founder Haus | Agroverse Partners" property="twitter:title"/>
 <meta content="Founder Haus partner location in Brazil." property="twitter:description"/>
-<meta content="https://www.agroverse.shop/assets/partners/headers/founderhaus-header.jpg" property="twitter:image"/>
+<meta content="https://www.agroverse.shop/partners/founderhaus/assets/partners/headers/founderhaus-header.jpg" property="twitter:image"/>
 <!-- Favicon -->
-<link href="../../assets/images/logo/favicon-192x192.jpeg" rel="icon" type="image/jpeg" sizes="192x192"/>
-<link href="../../assets/images/logo/favicon-32x32.jpeg" rel="icon" type="image/jpeg" sizes="32x32"/>
+<link href="../../assets/images/logo/favicon-192x192.jpeg" rel="icon" sizes="192x192" type="image/jpeg"/>
+<link href="../../assets/images/logo/favicon-32x32.jpeg" rel="icon" sizes="32x32" type="image/jpeg"/>
 <link href="../../assets/images/logo/favicon-32x32.jpeg" rel="shortcut icon" type="image/jpeg"/>
 <!-- Google Fonts -->
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
@@ -399,6 +399,8 @@
             }
         }</style>
 <!-- Leaflet CSS for maps -->
+<!-- Partner Navigation CSS -->
+<link href="../../css/partner-navigation.css" rel="stylesheet"/>
 <link crossorigin="" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" rel="stylesheet"/>
 </head>
 <body>
@@ -411,11 +413,10 @@
 <li><a href="../../index.html#home">Home</a></li>
 <li><a href="../../index.html#mission">Mission</a></li>
 <li><a href="../../index.html#products">Products</a></li>
-<li><a href="../../index.html#farmers">Farms</a></li>
+<li><a href="../../cacao-journeys/index.html">Cacao Journeys</a></li>
 <li><a href="../../index.html#shipments">Shipments</a></li>
-<li><a href="../../blog/">Blog</a></li>
 <li><a href="../../index.html#gatherings">Gatherings</a></li>
-<li><a href="../index.html">Partners</a></li>
+<li><a href="../../blog/">Blog</a></li>
 <li><a href="../../order-history/">Order History</a></li>
 <li><a href="../../index.html#contact">Contact</a></li>
 </ul>
@@ -433,13 +434,16 @@
 <section class="content-section">
 <h2>About Founder Haus</h2>
 <div class="partner-story">
-<p>Founder Haus partner location in Brazil.</p>
+<p>Founder Haus is an innovation hub and collaborative space located in Florianópolis, Brazil, serving as a gathering place for entrepreneurs, creators, and innovators. This vibrant community space brings together people from diverse backgrounds to collaborate, learn, and build meaningful connections.</p>
+<p>As the starting point of <a href="../../cacao-journeys/brazilian-path/index.html" style="color: var(--color-primary); text-decoration: underline; font-weight: 600;">The Brazilian Drift</a>, Founder Haus represents the beginning of a transformative journey through Brazil's regenerative cacao landscape. From this innovation hub in the south, the journey takes you north through the historic cacao farms of Bahia to the award-winning regenerative farms in the Amazon Rainforest of Pará.</p>
+<p>At Founder Haus, regenerative cacao serves as a catalyst for connection and community building. Entrepreneurs and creators gather here to share ideas, collaborate on projects, and experience the transformative power of ethically-sourced cacao that supports rainforest restoration and local farming communities.</p>
+<p>The space embodies the spirit of innovation and regeneration—bringing together technology, entrepreneurship, and sustainable agriculture to create positive change. It's a place where the future of regenerative business meets the ancient wisdom of cacao cultivation.</p>
 </div>
 <div class="partner-info">
 <h3>Partner Information</h3>
 <div class="info-row">
 <div class="info-label">Location</div>
-<div class="info-value">Brazil</div>
+<div class="info-value">Av. dos Merlins, 156 - Jurerê Internacional, Florianópolis - SC, 88053-370, Brazil</div>
 </div>
 <div class="info-row">
 <div class="info-label">Status</div>
@@ -451,8 +455,12 @@
 <h3>Location</h3>
 <div id="map-founderhaus" style="width: 100%; height: 400px; border-radius: 12px; margin-bottom: 1rem; border: 2px solid rgba(59, 51, 51, 0.1);"></div>
 <div style="text-align: center;">
-<a href="https://www.google.com/maps/search/?api=1&amp;query=Brazil" rel="noreferrer" style="color: var(--color-primary); text-decoration: underline; font-size: 14px;" target="_blank">View on Google Maps</a>
+<a href="https://www.google.com/maps/search/?api=1&amp;query=Av.+dos+Merlins,+156+-+Jurerê+Internacional,+Florianópolis+-+SC,+88053-370,+Brazil" rel="noreferrer" style="color: var(--color-primary); text-decoration: underline; font-size: 14px;" target="_blank">View on Google Maps</a>
 </div>
+</div>
+<!-- Partner Navigation -->
+<div class="partner-navigation" id="partner-navigation">
+<!-- Navigation will be inserted here by JavaScript -->
 </div>
 <a class="back-link" href="../index.html">Back to All Partners</a>
 </section>
@@ -465,11 +473,10 @@
 <li><a href="../../index.html#home">Home</a></li>
 <li><a href="../../index.html#mission">Mission</a></li>
 <li><a href="../../index.html#products">Products</a></li>
-<li><a href="../../index.html#farmers">Farms</a></li>
+<li><a href="../../cacao-journeys/index.html">Cacao Journeys</a></li>
 <li><a href="../../index.html#shipments">Shipments</a></li>
-<li><a href="../../blog/">Blog</a></li>
 <li><a href="../../index.html#gatherings">Gatherings</a></li>
-<li><a href="../index.html">Partners</a></li>
+<li><a href="../../blog/">Blog</a></li>
 <li><a href="../../order-history/">Order History</a></li>
 <li><a href="mailto:community@agroverse.shop">Contact</a></li>
 </ul>
@@ -490,7 +497,7 @@
                 }).addTo(map);
                 
                 // Geocode location using Nominatim (OpenStreetMap)
-                const location = "Brazil";
+                const location = "Av. dos Merlins, 156 - Jurerê Internacional, Florianópolis - SC, 88053-370, Brazil";
                 fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(location)}&limit=1`)
                     .then(response => response.json())
                     .then(data => {
@@ -501,7 +508,7 @@
                             
                             L.marker([lat, lon])
                                 .addTo(map)
-                                .bindPopup('<b>Founder Haus</b><br>Brazil')
+                                .bindPopup('<b>Founderhaus</b><br>Av. dos Merlins, 156<br>Jurerê Internacional, Florianópolis - SC<br>88053-370, Brazil')
                                 .openPopup();
                         }
                     })
@@ -576,6 +583,10 @@
     });
     </script>
 <script src="../../js/config.js"></script>
+<script src="../../js/partners-data.js"></script>
+<script src="../../js/farms-data.js"></script>
+<script src="../../js/drift-navigation.js"></script>
+<script src="../../js/partner-navigation.js"></script>
 <script src="../../js/universal-nav.js"></script>
 <div class="mobile-menu-overlay"></div><script>
     document.addEventListener('DOMContentLoaded', function() {

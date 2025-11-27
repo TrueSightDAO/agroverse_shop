@@ -17,6 +17,29 @@
    * Get base URL for relative paths
    */
   function getBaseUrl() {
+    // Handle file:// URLs
+    if (window.location.protocol === 'file:') {
+      const path = window.location.pathname;
+      // For file:// URLs, pathname includes the full file path
+      // Extract just the directory structure
+      const pathParts = path.split('/').filter(p => p);
+      // Remove the filename (last part if it ends with .html)
+      if (pathParts.length > 0 && pathParts[pathParts.length - 1].endsWith('.html')) {
+        pathParts.pop();
+      }
+      // Count depth (excluding root directories like Users, Applications, etc.)
+      // For partner pages: partners/kikis-cocoa -> depth = 2
+      const depth = pathParts.length;
+      // Find where 'agroverse_shop' or similar project root is
+      const projectRootIndex = pathParts.findIndex(p => p.includes('agroverse'));
+      if (projectRootIndex >= 0) {
+        const relativeDepth = pathParts.length - projectRootIndex - 1;
+        return relativeDepth > 0 ? '../'.repeat(relativeDepth) : '../';
+      }
+      return depth > 0 ? '../'.repeat(depth) : '../';
+    }
+    
+    // Handle http/https URLs
     const path = window.location.pathname;
     if (path === '/' || path === '/index.html') {
       return '';
@@ -119,14 +142,24 @@
       const baseUrl = getBaseUrl();
       if (!document.querySelector('script[src*="order-history.js"]')) {
         const orderHistoryJs = document.createElement('script');
-        orderHistoryJs.src = baseUrl + 'js/order-history.js';
+        // Handle file:// URLs and relative paths
+        let scriptPath = baseUrl + 'js/order-history.js';
+        if (window.location.protocol === 'file:') {
+          // For file:// URLs, ensure we have a proper relative path
+          if (!baseUrl || baseUrl === '/') {
+            scriptPath = '../../js/order-history.js';
+          }
+        }
+        orderHistoryJs.src = scriptPath;
         orderHistoryJs.async = true;
-        document.body.appendChild(orderHistoryJs);
-        
-        // Wait for it to load
+        // Suppress errors if file doesn't exist
+        orderHistoryJs.onerror = function() {
+          console.warn('order-history.js not found, skipping order history link');
+        };
         orderHistoryJs.onload = function() {
           setTimeout(checkAndAddOrderHistoryLink, 500);
         };
+        document.body.appendChild(orderHistoryJs);
       } else {
         // Already loading, check after a delay
         setTimeout(checkAndAddOrderHistoryLink, 1000);
