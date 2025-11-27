@@ -377,10 +377,10 @@
 </div>
 <div class="pilgrimage-card-body">
 <h2>The Pacific West Coast Drift</h2>
-<p>Journey from Seattle to the California desert, visiting partner venues where communities gather around regenerative cacao. Experience the diverse spaces—from urban sanctuaries to desert retreats—where our cacao brings people together in mindful connection.</p>
+<p>Journey from Washington's borderlands near Canada to the California desert near Mexico, visiting partner venues where communities gather around regenerative cacao. Following a path reminiscent of the Pacific Crest Trail, experience diverse spaces—from mountain gatherings to urban sanctuaries to desert retreats—where our cacao brings people together in mindful connection.</p>
 <div class="pilgrimage-stats">
 <div class="stat-item">
-                    <span class="stat-value" id="gathering-venues-count">19</span>
+                    <span class="stat-value" id="gathering-venues-count">21</span>
 <span class="stat-label">Venues</span>
 </div>
 <div class="stat-item">
@@ -452,6 +452,9 @@
         
         if (window.PARTNERS_DATA) {
             const pacificStops = [
+                'okanogan-family-barter-faire',
+                'orbis86',
+                'rpm-ninja',
                 'block71-silicon-valley',
                 'go-ask-alice',
                 'green-gulch-farm-zen-center',
@@ -470,12 +473,13 @@
                 'republic-cafe-and-ming-lounge',
                 'prism-percussions',
                 'love-of-ganesha',
-                'embodied-blindfold-dance'
+                'embodied-blindfold-dance',
+                'edge-and-node-house-of-web3'
             ];
-            const venueCount = pacificStops.filter(slug => window.PARTNERS_DATA[slug]).length || 19;
+            const venueCount = pacificStops.filter(slug => window.PARTNERS_DATA[slug]).length || 21;
             countElement.textContent = venueCount;
         } else {
-            countElement.textContent = '19';
+            countElement.textContent = '21';
         }
     });
 </script>

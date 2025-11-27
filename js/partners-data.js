@@ -3,6 +3,22 @@
  * Used to calculate nearest neighbors for next/previous navigation
  */
 window.PARTNERS_DATA = {
+    'okanogan-family-barter-faire': {
+        name: 'Okanogan Family Barter Faire',
+        slug: 'okanogan-family-barter-faire',
+        lat: 48.6822123,
+        lon: -119.2346017,
+        location: 'Okanogan, Washington',
+        description: 'A beloved annual gathering in Okanogan, Washington, where communities come together for the Family Barter Faire—a celebration of trade, connection, and regenerative living. This vibrant event brings together artisans, farmers, musicians, and families in a spirit of exchange and community building. As an Agroverse partner, the Okanogan Family Barter Faire offers regenerative ceremonial cacao, creating spaces for mindful connection and conscious celebration that support both local community and rainforest restoration.'
+    },
+    'orbis86': {
+        name: 'Orbis86',
+        slug: 'orbis86',
+        lat: 37.7879,
+        lon: -122.4094,
+        location: 'San Francisco, California',
+        description: 'A collaborative innovation hub in San Francisco\'s Market Street area, Orbis86 brings together entrepreneurs, creators, and technologists to explore the intersection of AI, Web3, and regenerative practices. Founded by Soniya Ahuja, Orbis86 creates spaces where cutting-edge technology meets conscious community building. As an Agroverse partner, Orbis86 incorporates regenerative ceremonial cacao into their events and gatherings, fostering mindful connection and innovation that supports both technological advancement and rainforest restoration.'
+    },
     'block71-silicon-valley': {
         name: 'Block71 Silicon Valley',
         slug: 'block71-silicon-valley',
