@@ -46,7 +46,7 @@
             location: 'Quartzite, Arizona & California Desert (Salton Sea, Joshua Tree)',
             type: 'experience',
             url: 'experiences/winter-desert-gatherings/index.html',
-            season: 'Winter (Thanksgiving period)',
+            season: 'Winter (Thanksgiving period through end of winter)',
             description: 'During the winter season, nomads migrate to the desert in Arizona Quartzite and California\'s Salton Sea and Joshua Tree areas, where vibrant gatherings bring communities together. Experience Tribe Boheme gathering, Van Aid, SchooliePalooza, Bombay Beach Binnelie, Boondockers bash, Rubber Tramp Rendezvous, and the Quartzite gem show—each a celebration of freedom, community, and conscious living. As the final destination of the Pacific West Coast journey, these winter desert gatherings offer a powerful culmination to the seasonal migration, where regenerative cacao creates spaces for connection, celebration, and transformation in the heart of the desert.',
             gatherings: [
                 'Tribe Boheme gathering',

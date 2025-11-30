@@ -7,19 +7,19 @@
 <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
 <!-- SEO Meta Tags -->
 <title>The Pacific West Coast Journey | Agroverse Cacao Journeys</title>
-<meta content="A self-guided journey from Washington's borderlands near Canada to the California and Arizona desert, beginning in Spring (May) and culminating in Winter. Visit partner venues where communities gather around regenerative cacao, following a path reminiscent of the Pacific Crest Trail." name="description"/>
+<meta content="A journey from Washington's borderlands near Canada to the California and Arizona desert, beginning in Spring (May) and culminating in Winter (Thanksgiving through end of winter). Visit partner venues where communities gather around regenerative cacao, following a path reminiscent of the Pacific Crest Trail." name="description"/>
 <link href="https://www.agroverse.shop/cacao-journeys/pacific-west-coast-path" rel="canonical"/>
 <!-- Open Graph / Facebook -->
 <meta content="website" property="og:type"/>
 <meta content="https://www.agroverse.shop/cacao-journeys/pacific-west-coast-path" property="og:url"/>
 <meta content="The Pacific West Coast Journey | Agroverse Cacao Journeys" property="og:title"/>
-<meta content="A self-guided journey from Washington's borderlands near Canada to the California and Arizona desert, beginning in Spring (May) and culminating in Winter. Visit partner venues where communities gather around regenerative cacao." property="og:description"/>
+<meta content="A journey from Washington's borderlands near Canada to the California and Arizona desert, beginning in Spring (May) and culminating in Winter (Thanksgiving through end of winter). Visit partner venues where communities gather around regenerative cacao." property="og:description"/>
 <meta content="https://www.agroverse.shop/cacao-journeys/pacific-west-coast-path/assets/images/pacific-coast-highway.jpg" property="og:image"/><meta content="630" property="og:image:height"/><meta content="1200" property="og:image:width"/>
 <!-- Twitter -->
 <meta content="summary_large_image" property="twitter:card"/>
 <meta content="https://www.agroverse.shop/cacao-journeys/pacific-west-coast-path" property="twitter:url"/>
 <meta content="The Pacific West Coast Journey | Agroverse Cacao Journeys" property="twitter:title"/>
-<meta content="A self-guided journey from Washington's borderlands near Canada to the California and Arizona desert, beginning in Spring (May) and culminating in Winter. Visit partner venues where communities gather around regenerative cacao." property="twitter:description"/>
+<meta content="A journey from Washington's borderlands near Canada to the California and Arizona desert, beginning in Spring (May) and culminating in Winter (Thanksgiving through end of winter). Visit partner venues where communities gather around regenerative cacao." property="twitter:description"/>
 <meta content="https://www.agroverse.shop/cacao-journeys/pacific-west-coast-path/assets/images/pacific-coast-highway.jpg" property="twitter:image"/>
 <!-- Favicon -->
 <link href="../../assets/images/logo/favicon-192x192.jpeg" rel="icon" sizes="192x192" type="image/jpeg"/>
@@ -583,14 +583,11 @@
 </div>
 <section class="journey-hero">
 <h1>The Pacific West Coast Journey</h1>
-        <p>A self-guided journey from Washington's borderlands near Canada to the California and Arizona desert, connecting communities through regenerative cacao. Beginning in Spring (May) with the Okanogan Family Barter Faire and culminating in Winter (Thanksgiving period) with desert gatherings, this seasonal migration follows a path reminiscent of the Pacific Crest Trail. Wander this journey to discover gathering spaces where mindful connection flourishes—from mountain gatherings to urban sanctuaries to winter desert retreats—each venue a waypoint on your own journey of conscious transformation.</p>
+        <p>A journey from Washington's borderlands near Canada to the California and Arizona desert, connecting communities through regenerative cacao. Beginning in Spring (May) with the Okanogan Family Barter Faire and culminating in Winter (Thanksgiving period through end of winter) with desert gatherings, this seasonal migration follows a path reminiscent of the Pacific Crest Trail. Discover gathering spaces where mindful connection flourishes—from mountain gatherings to urban sanctuaries to winter desert retreats—each venue a waypoint on your journey of conscious transformation.</p>
 </section>
 <section class="content-section">
         <div class="intro-text">
-        <p><strong>A Self-Guided Journey</strong></p>
-        <p>This is a self-guided journey, not a package tour. You create your own path, timing, and experience as you travel from Washington's borderlands near Canada to the California and Arizona desert, following a path reminiscent of the Pacific Crest Trail.</p>
-        <p><strong>Seasonal Timeline</strong></p>
-        <p>The journey begins in <strong>Spring (May)</strong> with the Okanogan Family Barter Faire in Washington and culminates in <strong>Winter (Thanksgiving period)</strong> with desert gatherings in Arizona Quartzite, California's Salton Sea, and Joshua Tree areas. Traveling through diverse landscapes and communities—from mountain gatherings to Pacific Northwest creative hubs, to California's coastal sanctuaries and winter desert retreats—each stop offers a unique space for gathering, reflection, and connection, all centered around the regenerative power of cacao.</p>
+        <p>The journey begins in <strong>Spring (May)</strong> with the Okanogan Family Barter Faire in Washington and culminates in <strong>Winter (Thanksgiving period through end of winter)</strong> with desert gatherings in Arizona Quartzite, California's Salton Sea, and Joshua Tree areas. Traveling through diverse landscapes and communities—from mountain gatherings to Pacific Northwest creative hubs, to California's coastal sanctuaries and winter desert retreats—each stop offers a unique space for gathering, reflection, and connection, all centered around the regenerative power of cacao.</p>
         </div>
 <div class="map-section">
 <div id="journey-map"></div>
@@ -861,8 +858,13 @@
                 if (stop.isExperience) {
                     imagePath = stop.image || '../../assets/partners/headers/winter-desert-gatherings-header.jpg';
                 } else {
-                    const imageExt = stop.slug === 'hacker-dojo' || stop.slug === 'lumin-earth-apothecary' || stop.slug === 'republic-cafe-and-ming-lounge' ? 'jpeg' : 'jpg';
-                    imagePath = `../../assets/partners/headers/${stop.slug}-header.${imageExt}`;
+                    // Special case for Prism Percussions - use photo with Jenifer Runnion
+                    if (stop.slug === 'prism-percussions') {
+                        imagePath = '../../assets/partners/prism-percussions/me_with_jennifer_runnion.jpg';
+                    } else {
+                        const imageExt = stop.slug === 'hacker-dojo' || stop.slug === 'lumin-earth-apothecary' || stop.slug === 'republic-cafe-and-ming-lounge' ? 'jpeg' : 'jpg';
+                        imagePath = `../../assets/partners/headers/${stop.slug}-header.${imageExt}`;
+                    }
                 }
                 
                 // Determine if this is an experience or partner
