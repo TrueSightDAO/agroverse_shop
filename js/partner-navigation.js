@@ -29,7 +29,27 @@
         
         // Helper function to get URL for a stop based on its type
         function getUrlForStop(stop) {
-            if (!stop || !stop.type) {
+            if (!stop) {
+                return '#';
+            }
+            
+            // Check if it's a known experience slug first (even if type is missing)
+            if (stop.slug === 'slab-city-salvation-mountain' || stop.slug === 'winter-desert-gatherings') {
+                return '../../cacao-journeys/pacific-west-coast-path/experiences/' + stop.slug + '/index.html';
+            }
+            
+            if (stop.slug === 'itacare-cultural-experiences' || stop.slug === 'salvador-colonial-history' || stop.slug === 'jungle-johnny-amazon-tours' || stop.slug === 'cargo-boat-manaus-leticia') {
+                const slugToFolderMap = {
+                    'itacare-cultural-experiences': 'itacare-cultural-immersion',
+                    'salvador-colonial-history': 'salvador-colonial-history',
+                    'jungle-johnny-amazon-tours': 'jungle-johnny-amazon-tours',
+                    'cargo-boat-manaus-leticia': 'cargo-boat-manaus-leticia'
+                };
+                const folderName = slugToFolderMap[stop.slug] || stop.slug;
+                return '../../cacao-journeys/brazilian-path/experiences/' + folderName + '/index.html';
+            }
+            
+            if (!stop.type) {
                 // Fallback: try to determine from slug
                 if (stop.slug === 'founderhaus' || stop.slug === 'black-king-ilheus') {
                     return '../' + stop.slug + '/index.html';
@@ -37,16 +57,6 @@
                     return '../../farms/' + stop.slug + '/index.html';
                 } else if (stop.slug === 'coopercabruca' || stop.slug === 'cepotx') {
                     return '../../cooperatives/' + stop.slug + '/index.html';
-                } else if (stop.slug === 'itacare-cultural-experiences' || stop.slug === 'salvador-colonial-history' || stop.slug === 'jungle-johnny-amazon-tours' || stop.slug === 'cargo-boat-manaus-leticia') {
-                    // Map data slug to folder name for experiences
-                    const slugToFolderMap = {
-                        'itacare-cultural-experiences': 'itacare-cultural-immersion',
-                        'salvador-colonial-history': 'salvador-colonial-history',
-                        'jungle-johnny-amazon-tours': 'jungle-johnny-amazon-tours',
-                        'cargo-boat-manaus-leticia': 'cargo-boat-manaus-leticia'
-                    };
-                    const folderName = slugToFolderMap[stop.slug] || stop.slug;
-                    return '../../cacao-journeys/brazilian-path/experiences/' + folderName + '/index.html';
                 } else {
                     return '../' + stop.slug + '/index.html';
                 }
@@ -65,10 +75,17 @@
                         'itacare-cultural-experiences': 'itacare-cultural-immersion',
                         'salvador-colonial-history': 'salvador-colonial-history',
                         'jungle-johnny-amazon-tours': 'jungle-johnny-amazon-tours',
-                        'cargo-boat-manaus-leticia': 'cargo-boat-manaus-leticia'
+                        'cargo-boat-manaus-leticia': 'cargo-boat-manaus-leticia',
+                        'slab-city-salvation-mountain': 'slab-city-salvation-mountain',
+                        'winter-desert-gatherings': 'winter-desert-gatherings'
                     };
                     const folderName = slugToFolderMap[stop.slug] || stop.slug;
-                    return '../../cacao-journeys/brazilian-path/experiences/' + folderName + '/index.html';
+                    // Determine if it's Pacific or Brazilian path based on slug
+                    if (stop.slug === 'slab-city-salvation-mountain' || stop.slug === 'winter-desert-gatherings') {
+                        return '../../cacao-journeys/pacific-west-coast-path/experiences/' + folderName + '/index.html';
+                    } else {
+                        return '../../cacao-journeys/brazilian-path/experiences/' + folderName + '/index.html';
+                    }
                 default:
                     return '#';
             }

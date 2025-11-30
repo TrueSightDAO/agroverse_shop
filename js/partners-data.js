@@ -198,7 +198,7 @@ window.PARTNERS_DATA = {
         lon: -122.3321,
         location: 'Seattle, Washington',
         description: 'Led by Jae Nice, RPM Ninja creates safe creative spaces for music, art, and community in Seattle. Through immersive events, fantasy balls, bazaars, and workshops, they bring together artists, musicians, and community members to celebrate creativity and connection.'
-    }
+    },
 };
 
 /**
