@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<!-- SEO Meta Tags -->
+<title>Winter Desert Gatherings | Pacific West Coast Journey Experiences</title>
+<meta content="Experience the winter desert gatherings in Arizona Quartzite, California Salton Sea, and Joshua Tree. Join Tribe Boheme, Van Aid, SchooliePalooza, Bombay Beach Binnelie, Boondockers bash, Rubber Tramp Rendezvous, and the Quartzite gem show." name="description"/>
+<link href="https://www.agroverse.shop/cacao-journeys/pacific-west-coast-path/experiences/winter-desert-gatherings" rel="canonical"/>
+<!-- Open Graph / Facebook -->
+<meta content="website" property="og:type"/>
+<meta content="https://www.agroverse.shop/cacao-journeys/pacific-west-coast-path/experiences/winter-desert-gatherings" property="og:url"/>
+<meta content="Winter Desert Gatherings | Pacific West Coast Journey Experiences" property="og:title"/>
+<meta content="Experience the winter desert gatherings where nomads migrate to Arizona Quartzite, California Salton Sea, and Joshua Tree for community, celebration, and connection." property="og:description"/>
+<meta content="https://www.agroverse.shop/assets/partners/headers/winter-desert-gatherings-header.jpg" property="og:image"/>
+<!-- Twitter -->
+<meta content="summary_large_image" property="twitter:card"/>
+<meta content="https://www.agroverse.shop/cacao-journeys/pacific-west-coast-path/experiences/winter-desert-gatherings" property="twitter:url"/>
+<meta content="Winter Desert Gatherings | Pacific West Coast Journey Experiences" property="twitter:title"/>
+<meta content="Experience the winter desert gatherings where nomads migrate to Arizona Quartzite, California Salton Sea, and Joshua Tree for community, celebration, and connection." property="twitter:description"/>
+<meta content="https://www.agroverse.shop/assets/partners/headers/winter-desert-gatherings-header.jpg" property="twitter:image"/>
+<!-- Favicon -->
+<link href="../../../../assets/images/logo/favicon-192x192.jpeg" rel="icon" sizes="192x192" type="image/jpeg"/>
+<link href="../../../../assets/images/logo/favicon-32x32.jpeg" rel="icon" sizes="32x32" type="image/jpeg"/>
+<link href="../../../../assets/images/logo/favicon-32x32.jpeg" rel="shortcut icon" type="image/jpeg"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&amp;family=Open+Sans:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<!-- Leaflet CSS for maps -->
+<link crossorigin="" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" rel="stylesheet"/>
+<link href="../../../../css/navigation.css" rel="stylesheet"/>
+<style>
+        :root {
+            --color-primary: #3b3333;
+            --color-secondary: #4d4d4d;
+            --color-accent: #fefc8f;
+            --color-text: #3b3333;
+            --color-text-light: #756F63;
+            --color-bg: #ffffff;
+            --color-bg-light: #f7f7f7;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Open Sans', sans-serif;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--font-body);
+            color: var(--color-text);
+            line-height: 1.6;
+            background-color: var(--color-bg);
+        }
+        
+        /* Hero Section */
+        .experience-hero {
+            position: relative;
+            min-height: 60vh;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, rgba(59, 51, 51, 0.8) 0%, rgba(77, 77, 77, 0.8) 100%),
+                        url('../../../../assets/partners/headers/winter-desert-gatherings-header.jpg') center center/cover;
+        }
+        
+        .experience-hero-content h1 {
+            font-family: var(--font-heading);
+            font-size: 48px;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8), 0 0 10px rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.4);
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            display: inline-block;
+        }
+        
+        .experience-hero-content p {
+            font-size: 20px;
+            opacity: 0.95;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8), 0 0 10px rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.3);
+            padding: 0.5rem 1.5rem;
+            border-radius: 6px;
+            display: inline-block;
+        }
+        
+        /* Content Sections */
+        .content-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+        
+        .content-section h2 {
+            font-family: var(--font-heading);
+            font-size: 36px;
+            color: var(--color-primary);
+            margin-bottom: 2rem;
+        }
+        
+        .experience-story {
+            font-size: 18px;
+            line-height: 1.8;
+            color: var(--color-text);
+            margin-bottom: 2rem;
+        }
+        
+        .experience-story p {
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Photo Gallery */
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+        
+        .photo-item {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .photo-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .photo-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .photo-caption {
+            padding: 1rem;
+            background: var(--color-bg-light);
+            font-size: 0.9rem;
+            color: var(--color-text-light);
+            text-align: center;
+        }
+        
+        .experience-info {
+            background: var(--color-bg-light);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .experience-info h3 {
+            font-family: var(--font-heading);
+            font-size: 24px;
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+        }
+        
+        .info-row {
+            display: flex;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(59, 51, 51, 0.1);
+        }
+        
+        .info-row:last-child {
+            border-bottom: none;
+        }
+        
+        .info-label {
+            font-weight: 600;
+            color: var(--color-primary);
+            min-width: 150px;
+        }
+        
+        .info-value {
+            color: var(--color-text);
+        }
+        
+        .info-value a {
+            color: var(--color-primary);
+            text-decoration: underline;
+        }
+        
+        .info-value a:hover {
+            color: var(--color-secondary);
+        }
+        
+        .gatherings-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .gatherings-list li {
+            padding: 0.5rem 0;
+            color: var(--color-text);
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        .gatherings-list li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--color-primary);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-top: 2rem;
+            color: var(--color-primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        
+        .back-link::before {
+            content: '← ';
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--color-primary);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            list-style: none;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .experience-hero-content h1 {
+                font-size: 36px;
+            }
+            
+            .photo-gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+<header>
+<nav>
+<a class="logo" href="../../../../index.html">
+<img alt="Agroverse Logo" src="../../../../assets/images/logo/agroverse-logo.jpeg"/>
+</a>
+<button aria-expanded="false" aria-label="Toggle navigation menu" class="mobile-menu-toggle">
+<span class="hamburger-line"></span>
+<span class="hamburger-line"></span>
+<span class="hamburger-line"></span>
+</button>
+<ul class="nav-links mobile-menu">
+<li><a href="../../../../index.html#home">Home</a></li>
+<li><a href="../../../../index.html#mission">Mission</a></li>
+<li><a href="../../../../index.html#products">Products</a></li>
+<li><a href="../../index.html">Cacao Journeys</a></li>
+<li><a href="../../../../index.html#shipments">Shipments</a></li>
+<li><a href="../../../../index.html#gatherings">Gatherings</a></li>
+<li><a href="../../../../blog/">Blog</a></li>
+<li><a href="../../../../order-history/">Order History</a></li>
+<li><a href="../../../../index.html#contact">Contact</a></li>
+</ul>
+</nav>
+</header>
+<section class="experience-hero">
+<div class="experience-hero-content">
+<h1>Winter Desert Gatherings</h1>
+<p>Quartzite, Salton Sea & Joshua Tree</p>
+</div>
+</section>
+<section class="content-section">
+<h2>About This Experience</h2>
+<div class="experience-story">
+<p>During the winter season, nomads migrate to the desert in Arizona Quartzite and California's Salton Sea and Joshua Tree areas, where vibrant gatherings bring communities together. This seasonal migration represents the culmination of the Pacific West Coast journey—a time when travelers who have followed the path from Washington's borderlands gather in the warmth of the desert to celebrate community, freedom, and conscious living.</p>
+<p>These winter desert gatherings offer a powerful culmination to the seasonal migration, where regenerative cacao creates spaces for connection, celebration, and transformation in the heart of the desert. From the massive Quartzite gem show to intimate community gatherings, each event brings together nomads, travelers, and seekers in a spirit of mutual support and celebration.</p>
+<p><strong>The Nomad Community:</strong> The desert becomes a temporary city of vans, RVs, and converted school buses—a community of people who have chosen a life of freedom and connection. Here, you'll find workshops on sustainable living, skill-sharing sessions, music circles, and spaces for deep conversation and connection.</p>
+<p><strong>Regenerative Cacao in the Desert:</strong> As an Agroverse partner experience, these gatherings incorporate regenerative ceremonial cacao, creating sacred spaces for connection and celebration. Whether it's a morning cacao circle at sunrise, an evening ceremony under the stars, or a community gathering around the fire, cacao serves as a bridge between individuals and the larger community.</p>
+<p>This experience represents the final destination of the Pacific West Coast journey—a place where the path that began in Spring with the Okanogan Family Barter Faire finds its winter home in the desert, creating a full cycle of seasonal migration and community connection.</p>
+</div>
+<!-- Photo Gallery -->
+<div class="photo-gallery">
+<div class="photo-item">
+<img alt="Desert nomad community" src="../../../../assets/images/experiences/winter-desert/220E5915-E4B8-407E-9920-9BEC59113557.JPG"/>
+<div class="photo-caption">Desert nomad community gathering</div>
+</div>
+<div class="photo-item">
+<img alt="Drum Circle at the Lil cactus in South La Pousa" src="../../../../assets/images/experiences/winter-desert/A33F477A-2096-44F4-A8B3-3E57E041D112.JPG"/>
+<div class="photo-caption">Drum Circle at the Lil cactus in South La Pousa</div>
+</div>
+<div class="photo-item">
+<img alt="Desert gathering celebration" src="../../../../assets/images/experiences/winter-desert/533782E0-630D-4FD0-89F2-50702008EE43.JPG"/>
+<div class="photo-caption">Community celebration in the desert</div>
+</div>
+<div class="photo-item">
+<img alt="Desert community connection" src="../../../../assets/images/experiences/winter-desert/BFC04177-09AE-4EC1-A21C-E14ACA434CBF.JPG"/>
+<div class="photo-caption">Connection and community in the desert</div>
+</div>
+</div>
+<div class="experience-info">
+<h3>Experience Details</h3>
+<div class="info-row">
+<div class="info-label">Location</div>
+<div class="info-value">Quartzite, Arizona & California Desert (Salton Sea, Joshua Tree)</div>
+</div>
+<div class="info-row">
+<div class="info-label">Season</div>
+<div class="info-value">Winter (Thanksgiving period through end of winter)</div>
+</div>
+<div class="info-row">
+<div class="info-label">Duration</div>
+<div class="info-value">Varies by gathering - from weekend events to extended stays</div>
+</div>
+<div class="info-row">
+<div class="info-label">Gatherings & Events</div>
+<div class="info-value">
+<ul class="gatherings-list">
+<li>Tribe Boheme gathering</li>
+<li>Van Aid</li>
+<li>SchooliePalooza</li>
+<li>Bombay Beach Binnelie</li>
+<li>Boondockers bash</li>
+<li>Rubber Tramp Rendezvous</li>
+<li>Quartzite gem show</li>
+</ul>
+</div>
+</div>
+<div class="info-row">
+<div class="info-label">Community</div>
+<div class="info-value"><a href="https://www.facebook.com/groups/1180376599189046/" target="_blank" rel="noopener noreferrer">Desert Nomads Facebook Group</a></div>
+</div>
+<div class="info-row">
+<div class="info-label">Journey Position</div>
+<div class="info-value">Final destination of the Pacific West Coast Journey (Winter season)</div>
+</div>
+</div>
+<!-- Location Map Section -->
+<div class="experience-info" style="margin-top: 3rem;">
+<h3>Location</h3>
+<div id="map-winter-desert" style="width: 100%; height: 400px; border-radius: 12px; margin-bottom: 1rem; border: 2px solid rgba(59, 51, 51, 0.1);"></div>
+<div style="text-align: center;">
+<a href="https://www.google.com/maps/search/?api=1&amp;query=Quartzite,+Arizona" rel="noreferrer" style="color: var(--color-primary); text-decoration: underline; font-size: 14px;" target="_blank">View Quartzite on Google Maps</a> | 
+<a href="https://www.google.com/maps/search/?api=1&amp;query=Salton+Sea,+California" rel="noreferrer" style="color: var(--color-primary); text-decoration: underline; font-size: 14px;" target="_blank">View Salton Sea on Google Maps</a> | 
+<a href="https://www.google.com/maps/search/?api=1&amp;query=Joshua+Tree,+California" rel="noreferrer" style="color: var(--color-primary); text-decoration: underline; font-size: 14px;" target="_blank">View Joshua Tree on Google Maps</a>
+</div>
+</div>
+<!-- Experience Navigation -->
+<div class="experience-navigation" id="experience-navigation">
+<!-- Navigation will be inserted here by JavaScript -->
+</div>
+<a class="back-link" href="../../index.html">Back to Pacific West Coast Journey</a>
+</section>
+<footer id="contact">
+<div class="footer-content">
+<h3 style="font-family: var(--font-heading); font-size: 2rem; margin-bottom: 1rem;">Agroverse</h3>
+<p>Regenerating our Amazon rainforest, One Cacao at a time</p>
+<p>Phone: <a href="tel:4153000019" style="color: white;">415-300-0019</a></p>
+<ul class="footer-links">
+<li><a href="../../../../index.html#home">Home</a></li>
+<li><a href="../../../../index.html#mission">Mission</a></li>
+<li><a href="../../../../index.html#products">Products</a></li>
+<li><a href="../../../../index.html#farmers">Farms</a></li>
+<li><a href="../../../../index.html#shipments">Shipments</a></li>
+<li><a href="../../../../blog/">Blog</a></li>
+<li><a href="../../../../index.html#gatherings">Gatherings</a></li>
+<li><a href="../../../../partners/index.html">Partners</a></li>
+<li><a href="../../index.html">Cacao Journeys</a></li>
+<li><a href="../../../../order-history/">Order History</a></li>
+<li><a href="mailto:community@agroverse.shop">Contact</a></li>
+</ul>
+<p style="margin-top: 2rem; opacity: 0.8; font-size: 0.9rem;">© 2024 Agroverse. All rights reserved.</p>
+</div>
+</footer>
+<!-- Leaflet JS for maps -->
+<script crossorigin="" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+        // Initialize Leaflet map with coordinates
+        document.addEventListener('DOMContentLoaded', function() {
+            function initMap() {
+                // Coordinates for Quartzite, Arizona (primary location)
+                const lat = 33.6642;
+                const lon = -114.1300;
+                
+                const map = L.map('map-winter-desert').setView([lat, lon], 7);
+                
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '© OpenStreetMap contributors',
+                    maxZoom: 19
+                }).addTo(map);
+                
+                // Add markers for all three main locations
+                L.marker([33.6642, -114.1300])
+                    .addTo(map)
+                    .bindPopup('<b>Quartzite, Arizona</b><br>Main gathering location')
+                    .openPopup();
+                
+                L.marker([33.2403, -115.9558])
+                    .addTo(map)
+                    .bindPopup('<b>Salton Sea, California</b><br>Desert gathering area');
+                
+                L.marker([34.1347, -116.3131])
+                    .addTo(map)
+                    .bindPopup('<b>Joshua Tree, California</b><br>Desert gathering area');
+            }
+            
+            initMap();
+        });
+        </script>
+<script src="../../../../js/config.js"></script>
+<script src="../../../../js/partners-data.js"></script>
+<script src="../../../../js/pacific-path-data.js"></script>
+<script src="../../../../js/drift-navigation.js"></script>
+<script src="../../../../js/experience-navigation.js"></script>
+<link href="../../../../css/journey-navigation.css" rel="stylesheet"/>
+<script src="../../../../js/navigation.js"></script>
+<script src="../../../../js/universal-nav.js"></script>
+<script src="../../../../js/cart.js"></script>
+<script src="../../../../js/cart-ui.js"></script>
+<div class="mobile-menu-overlay"></div>
+<link href="../../../../css/cart.css" rel="stylesheet"/>
+</body>
+</html>
+

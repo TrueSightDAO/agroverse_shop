@@ -26,7 +26,22 @@
         
         // Sort North to South (latitude descending)
         const slugs = Object.keys(filtered);
-        return slugs.sort((a, b) => filtered[b].lat - filtered[a].lat);
+        const sorted = slugs.sort((a, b) => filtered[b].lat - filtered[a].lat);
+        
+        // Remove Ponderosa from partner list (it's part of Slab City experience)
+        const sortedWithoutPonderosa = sorted.filter(slug => slug !== 'the-ponderosa-slab-city');
+        
+        // Add Slab City experience (before Winter Desert)
+        if (window.PACIFIC_PATH_DATA && window.PACIFIC_PATH_DATA['slab-city-salvation-mountain']) {
+            sortedWithoutPonderosa.push('slab-city-salvation-mountain');
+        }
+        
+        // Add winter desert experience as final stop
+        if (window.PACIFIC_PATH_DATA && window.PACIFIC_PATH_DATA['winter-desert-gatherings']) {
+            sortedWithoutPonderosa.push('winter-desert-gatherings');
+        }
+        
+        return sortedWithoutPonderosa;
     }
     
     // Get Brazilian Drift order - includes farms, partners, cooperatives, and experiences
@@ -87,7 +102,27 @@
             if (order.includes(currentSlug)) {
                 journeyUrl = '../../cacao-journeys/brazilian-path/index.html';
             } else {
-                return { previous: null, next: null, journeyUrl: null };
+                // Check if in Pacific West Coast drift (for experiences)
+                if (type === 'experience') {
+                    const pacificOrder = getPacificWestCoastDriftOrder();
+                    if (pacificOrder.includes(currentSlug)) {
+                        order = pacificOrder;
+                        journeyUrl = '../../cacao-journeys/pacific-west-coast-path/index.html';
+                    } else {
+                        return { previous: null, next: null, journeyUrl: null };
+                    }
+                } else if (type === 'partner') {
+                    // Partners can also be in Pacific drift
+                    const pacificOrder = getPacificWestCoastDriftOrder();
+                    if (pacificOrder.includes(currentSlug)) {
+                        order = pacificOrder;
+                        journeyUrl = '../../cacao-journeys/pacific-west-coast-path/index.html';
+                    } else {
+                        return { previous: null, next: null, journeyUrl: null };
+                    }
+                } else {
+                    return { previous: null, next: null, journeyUrl: null };
+                }
             }
         } else {
             return { previous: null, next: null, journeyUrl: null };
@@ -109,6 +144,10 @@
             // Check Brazilian path data first (includes all types)
             if (window.BRAZILIAN_PATH_DATA && window.BRAZILIAN_PATH_DATA[slug]) {
                 return window.BRAZILIAN_PATH_DATA[slug];
+            }
+            // Check Pacific path data (for experiences)
+            if (window.PACIFIC_PATH_DATA && window.PACIFIC_PATH_DATA[slug]) {
+                return window.PACIFIC_PATH_DATA[slug];
             }
             // Check farms data
             if (window.FARMS_DATA && window.FARMS_DATA[slug]) {

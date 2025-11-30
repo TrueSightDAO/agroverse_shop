@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<!-- SEO Meta Tags -->
+<title>Slab City & Salvation Mountain | Pacific West Coast Journey Experiences</title>
+<meta content="Experience Slab City, the 'Last Free Place in America,' and Salvation Mountain, a vibrant art installation in the California desert. Visit The Ponderosa, an off-grid homesteading haven where regenerative cacao creates connections in this unique desert community." name="description"/>
+<link href="https://www.agroverse.shop/cacao-journeys/pacific-west-coast-path/experiences/slab-city-salvation-mountain" rel="canonical"/>
+<!-- Open Graph / Facebook -->
+<meta content="website" property="og:type"/>
+<meta content="https://www.agroverse.shop/cacao-journeys/pacific-west-coast-path/experiences/slab-city-salvation-mountain" property="og:url"/>
+<meta content="Slab City & Salvation Mountain | Pacific West Coast Journey Experiences" property="og:title"/>
+<meta content="Experience Slab City, the 'Last Free Place in America,' and Salvation Mountain, a vibrant art installation in the California desert near the Salton Sea." property="og:description"/>
+<meta content="https://www.agroverse.shop/assets/partners/headers/the-ponderosa-slab-city-header.jpg" property="og:image"/>
+<!-- Twitter -->
+<meta content="summary_large_image" property="twitter:card"/>
+<meta content="https://www.agroverse.shop/cacao-journeys/pacific-west-coast-path/experiences/slab-city-salvation-mountain" property="twitter:url"/>
+<meta content="Slab City & Salvation Mountain | Pacific West Coast Journey Experiences" property="twitter:title"/>
+<meta content="Experience Slab City, the 'Last Free Place in America,' and Salvation Mountain, a vibrant art installation in the California desert near the Salton Sea." property="twitter:description"/>
+<meta content="https://www.agroverse.shop/assets/partners/headers/the-ponderosa-slab-city-header.jpg" property="twitter:image"/>
+<!-- Favicon -->
+<link href="../../../../assets/images/logo/favicon-192x192.jpeg" rel="icon" sizes="192x192" type="image/jpeg"/>
+<link href="../../../../assets/images/logo/favicon-32x32.jpeg" rel="icon" sizes="32x32" type="image/jpeg"/>
+<link href="../../../../assets/images/logo/favicon-32x32.jpeg" rel="shortcut icon" type="image/jpeg"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&amp;family=Open+Sans:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<!-- Leaflet CSS for maps -->
+<link crossorigin="" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" rel="stylesheet"/>
+<link href="../../../../css/navigation.css" rel="stylesheet"/>
+<style>
+        :root {
+            --color-primary: #3b3333;
+            --color-secondary: #4d4d4d;
+            --color-accent: #fefc8f;
+            --color-text: #3b3333;
+            --color-text-light: #756F63;
+            --color-bg: #ffffff;
+            --color-bg-light: #f7f7f7;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Open Sans', sans-serif;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--font-body);
+            color: var(--color-text);
+            line-height: 1.6;
+            background-color: var(--color-bg);
+        }
+        
+        /* Hero Section */
+        .experience-hero {
+            position: relative;
+            min-height: 60vh;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, rgba(59, 51, 51, 0.8) 0%, rgba(77, 77, 77, 0.8) 100%),
+                        url('../../../../assets/partners/headers/the-ponderosa-slab-city-header.jpg') center center/cover;
+        }
+        
+        .experience-hero-content h1 {
+            font-family: var(--font-heading);
+            font-size: 48px;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8), 0 0 10px rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.4);
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            display: inline-block;
+        }
+        
+        .experience-hero-content p {
+            font-size: 20px;
+            opacity: 0.95;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8), 0 0 10px rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.3);
+            padding: 0.5rem 1.5rem;
+            border-radius: 6px;
+            display: inline-block;
+        }
+        
+        /* Content Sections */
+        .content-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+        
+        .content-section h2 {
+            font-family: var(--font-heading);
+            font-size: 36px;
+            color: var(--color-primary);
+            margin-bottom: 2rem;
+        }
+        
+        .experience-story {
+            font-size: 18px;
+            line-height: 1.8;
+            color: var(--color-text);
+            margin-bottom: 2rem;
+        }
+        
+        .experience-story p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .experience-info {
+            background: var(--color-bg-light);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .experience-info h3 {
+            font-family: var(--font-heading);
+            font-size: 24px;
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+        }
+        
+        .info-row {
+            display: flex;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(59, 51, 51, 0.1);
+        }
+        
+        .info-row:last-child {
+            border-bottom: none;
+        }
+        
+        .info-label {
+            font-weight: 600;
+            color: var(--color-primary);
+            min-width: 150px;
+        }
+        
+        .info-value {
+            color: var(--color-text);
+        }
+        
+        .info-value a {
+            color: var(--color-primary);
+            text-decoration: underline;
+        }
+        
+        .info-value a:hover {
+            color: var(--color-secondary);
+        }
+        
+        .venue-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .venue-list li {
+            padding: 0.5rem 0;
+            color: var(--color-text);
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        .venue-list li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--color-primary);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .venue-list li a {
+            color: var(--color-primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .venue-list li a:hover {
+            text-decoration: underline;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-top: 2rem;
+            color: var(--color-primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        
+        .back-link::before {
+            content: '← ';
+        }
+        
+        /* Photo Gallery */
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+        
+        .photo-item {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .photo-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .photo-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .photo-caption {
+            padding: 1rem;
+            background: var(--color-bg-light);
+            font-size: 0.9rem;
+            color: var(--color-text-light);
+            text-align: center;
+        }
+        
+        @media (max-width: 768px) {
+            .photo-gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--color-primary);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            list-style: none;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .experience-hero-content h1 {
+                font-size: 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+<header>
+<nav>
+<a class="logo" href="../../../../index.html">
+<img alt="Agroverse Logo" src="../../../../assets/images/logo/agroverse-logo.jpeg"/>
+</a>
+<button aria-expanded="false" aria-label="Toggle navigation menu" class="mobile-menu-toggle">
+<span class="hamburger-line"></span>
+<span class="hamburger-line"></span>
+<span class="hamburger-line"></span>
+</button>
+<ul class="nav-links mobile-menu">
+<li><a href="../../../../index.html#home">Home</a></li>
+<li><a href="../../../../index.html#mission">Mission</a></li>
+<li><a href="../../../../index.html#products">Products</a></li>
+<li><a href="../../index.html">Cacao Journeys</a></li>
+<li><a href="../../../../index.html#shipments">Shipments</a></li>
+<li><a href="../../../../index.html#gatherings">Gatherings</a></li>
+<li><a href="../../../../blog/">Blog</a></li>
+<li><a href="../../../../order-history/">Order History</a></li>
+<li><a href="../../../../index.html#contact">Contact</a></li>
+</ul>
+</nav>
+</header>
+<section class="experience-hero">
+<div class="experience-hero-content">
+<h1>Slab City & Salvation Mountain</h1>
+<p>The Last Free Place in America</p>
+</div>
+</section>
+<section class="content-section">
+<h2>About This Experience</h2>
+<div class="experience-story">
+<p>Nestled in the California desert near the Salton Sea, Slab City stands as one of America's most unique communities—the "Last Free Place in America." This off-grid settlement, built on the concrete slabs of a former military base, has become a haven for free spirits, artists, nomads, and those seeking an alternative way of life beyond the constraints of modern society.</p>
+<p><strong>Slab City:</strong> A community without government, utilities, or traditional infrastructure, Slab City operates on principles of mutual aid, freedom, and self-reliance. Here, residents and visitors create their own rules, generate their own power, and build community through shared values and respect. The community is known for its vibrant art installations, music events, and gatherings that celebrate freedom and creative expression.</p>
+<p><strong>Salvation Mountain:</strong> Just outside Slab City stands Salvation Mountain, a massive, colorful art installation created by Leonard Knight over three decades. This vibrant monument, made from adobe, straw, and thousands of gallons of paint, stands as a testament to faith, love, and artistic vision. The mountain features biblical messages, colorful designs, and has been recognized as a national treasure, drawing visitors from around the world.</p>
+<p><strong>The Ponderosa:</strong> Within this unique desert landscape, The Ponderosa offers a welcoming space for visitors to experience Slab City and Salvation Mountain. Run by Rodney "Spyder" and Shannon, this homesteading haven combines rugged desert living with a vision for sustainability, featuring solar power, livestock, and plans for aquaponics. As an Agroverse partner venue, The Ponderosa incorporates regenerative ceremonial cacao into gatherings, creating spaces for connection, reflection, and celebration in the heart of this free-spirited community.</p>
+<p>This experience represents a powerful intersection of freedom, art, community, and conscious living—a place where regenerative cacao serves as a bridge between individuals and the larger community, supporting both local connection and rainforest restoration.</p>
+</div>
+<!-- Photo Gallery -->
+<div class="photo-gallery">
+<div class="photo-item">
+<img alt="Salvation Mountain" src="../../../../assets/images/experiences/slab-city/IMG_1461.JPG"/>
+<div class="photo-caption">Salvation Mountain</div>
+</div>
+<div class="photo-item">
+<img alt="Car henge near Salvation Mountain" src="../../../../assets/images/experiences/slab-city/IMG_1473.JPG"/>
+<div class="photo-caption">Car henge near Salvation Mountain</div>
+</div>
+<div class="photo-item">
+<img alt="The cancelled rave near Salvation Mountain" src="../../../../assets/images/experiences/slab-city/IMG_6980.JPG"/>
+<div class="photo-caption">The cancelled rave near Salvation Mountain</div>
+</div>
+<div class="photo-item">
+<img alt="The Range in Slab City" src="../../../../assets/images/experiences/slab-city/5A23510D-A8E2-4C40-A245-192A1FDC07CD.JPG"/>
+<div class="photo-caption">The Range in Slab City</div>
+</div>
+<div class="photo-item">
+<img alt="Flamingo Camp in Slab City" src="../../../../assets/images/experiences/slab-city/ACCC4E34-A8B1-480B-BF86-3348B2C462F7.JPG"/>
+<div class="photo-caption">Flamingo Camp in Slab City</div>
+</div>
+<div class="photo-item">
+<img alt="Chili night at The Ponderosa" src="../../../../assets/images/experiences/slab-city/6943151E-0C7C-485A-97B6-61953F3CBC76.JPG"/>
+<div class="photo-caption">Chili night at The Ponderosa</div>
+</div>
+</div>
+<div class="experience-info">
+<h3>Experience Details</h3>
+<div class="info-row">
+<div class="info-label">Location</div>
+<div class="info-value">Slab City, California (near Salton Sea)</div>
+</div>
+<div class="info-row">
+<div class="info-label">Season</div>
+<div class="info-value">Year-round, with peak season in winter months</div>
+</div>
+<div class="info-row">
+<div class="info-label">Duration</div>
+<div class="info-value">1-3 days recommended to fully experience the area</div>
+</div>
+<div class="info-row">
+<div class="info-label">Key Locations</div>
+<div class="info-value">
+<ul class="venue-list">
+<li><strong>Slab City</strong> - The off-grid community</li>
+<li><strong>Salvation Mountain</strong> - Leonard Knight's art installation</li>
+<li><a href="../../../../partners/the-ponderosa-slab-city/index.html">The Ponderosa</a> - Partner venue offering accommodations and gatherings</li>
+</ul>
+</div>
+</div>
+<div class="info-row">
+<div class="info-label">Journey Position</div>
+<div class="info-value">Near the end of the Pacific West Coast Journey, before Winter Desert Gatherings</div>
+</div>
+</div>
+<!-- Location Map Section -->
+<div class="experience-info" style="margin-top: 3rem;">
+<h3>Location</h3>
+<div id="map-slab-city" style="width: 100%; height: 400px; border-radius: 12px; margin-bottom: 1rem; border: 2px solid rgba(59, 51, 51, 0.1);"></div>
+<div style="text-align: center;">
+<a href="https://www.google.com/maps/search/?api=1&amp;query=Slab+City,+California" rel="noreferrer" style="color: var(--color-primary); text-decoration: underline; font-size: 14px;" target="_blank">View Slab City on Google Maps</a> | 
+<a href="https://www.google.com/maps/search/?api=1&amp;query=Salvation+Mountain,+California" rel="noreferrer" style="color: var(--color-primary); text-decoration: underline; font-size: 14px;" target="_blank">View Salvation Mountain on Google Maps</a>
+</div>
+</div>
+<!-- Experience Navigation -->
+<div class="experience-navigation" id="experience-navigation">
+<!-- Navigation will be inserted here by JavaScript -->
+</div>
+<a class="back-link" href="../../index.html">Back to Pacific West Coast Journey</a>
+</section>
+<footer id="contact">
+<div class="footer-content">
+<h3 style="font-family: var(--font-heading); font-size: 2rem; margin-bottom: 1rem;">Agroverse</h3>
+<p>Regenerating our Amazon rainforest, One Cacao at a time</p>
+<p>Phone: <a href="tel:4153000019" style="color: white;">415-300-0019</a></p>
+<ul class="footer-links">
+<li><a href="../../../../index.html#home">Home</a></li>
+<li><a href="../../../../index.html#mission">Mission</a></li>
+<li><a href="../../../../index.html#products">Products</a></li>
+<li><a href="../../../../index.html#farmers">Farms</a></li>
+<li><a href="../../../../index.html#shipments">Shipments</a></li>
+<li><a href="../../../../blog/">Blog</a></li>
+<li><a href="../../../../index.html#gatherings">Gatherings</a></li>
+<li><a href="../../../../partners/index.html">Partners</a></li>
+<li><a href="../../index.html">Cacao Journeys</a></li>
+<li><a href="../../../../order-history/">Order History</a></li>
+<li><a href="mailto:community@agroverse.shop">Contact</a></li>
+</ul>
+<p style="margin-top: 2rem; opacity: 0.8; font-size: 0.9rem;">© 2024 Agroverse. All rights reserved.</p>
+</div>
+</footer>
+<!-- Leaflet JS for maps -->
+<script crossorigin="" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+        // Initialize Leaflet map with coordinates
+        document.addEventListener('DOMContentLoaded', function() {
+            function initMap() {
+                // Coordinates for Slab City, California
+                const slabCityLat = 33.2581;
+                const slabCityLon = -115.4650;
+                
+                // Coordinates for Salvation Mountain (approximately 1 mile from Slab City)
+                const salvationMountainLat = 33.2522;
+                const salvationMountainLon = -115.4725;
+                
+                const map = L.map('map-slab-city').setView([slabCityLat, slabCityLon], 13);
+                
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '© OpenStreetMap contributors',
+                    maxZoom: 19
+                }).addTo(map);
+                
+                // Add marker for Slab City
+                L.marker([slabCityLat, slabCityLon])
+                    .addTo(map)
+                    .bindPopup('<b>Slab City</b><br>The "Last Free Place in America"')
+                    .openPopup();
+                
+                // Add marker for Salvation Mountain
+                L.marker([salvationMountainLat, salvationMountainLon])
+                    .addTo(map)
+                    .bindPopup('<b>Salvation Mountain</b><br>Leonard Knight\'s art installation');
+                
+                // Add marker for The Ponderosa
+                L.marker([33.2581, -115.4650])
+                    .addTo(map)
+                    .bindPopup('<b>The Ponderosa</b><br>Partner venue in Slab City');
+            }
+            
+            initMap();
+        });
+        </script>
+<script src="../../../../js/config.js"></script>
+<script src="../../../../js/partners-data.js"></script>
+<script src="../../../../js/pacific-path-data.js"></script>
+<script src="../../../../js/drift-navigation.js"></script>
+<script src="../../../../js/experience-navigation.js"></script>
+<link href="../../../../css/journey-navigation.css" rel="stylesheet"/>
+<script src="../../../../js/navigation.js"></script>
+<script src="../../../../js/universal-nav.js"></script>
+<script src="../../../../js/cart.js"></script>
+<script src="../../../../js/cart-ui.js"></script>
+<div class="mobile-menu-overlay"></div>
+<link href="../../../../css/cart.css" rel="stylesheet"/>
+</body>
+</html>
+

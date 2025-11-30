@@ -22,11 +22,17 @@
             'itacare-cultural-immersion': 'itacare-cultural-experiences',
             'salvador-colonial-history': 'salvador-colonial-history',
             'jungle-johnny-amazon-tours': 'jungle-johnny-amazon-tours',
-            'cargo-boat-manaus-leticia': 'cargo-boat-manaus-leticia'
+            'cargo-boat-manaus-leticia': 'cargo-boat-manaus-leticia',
+            'slab-city-salvation-mountain': 'slab-city-salvation-mountain',
+            'winter-desert-gatherings': 'winter-desert-gatherings'
         };
         
         const folderName = slugMatch[1];
         const currentSlug = folderToSlugMap[folderName] || folderName;
+        
+        // Determine which journey path we're in based on URL
+        const isPacificPath = currentPath.includes('/pacific-west-coast-path/');
+        
         const result = window.getDriftNeighbors(currentSlug, 'experience');
         
         if (!result || (!result.previous && !result.next)) return;
@@ -68,10 +74,13 @@
         
         // Update back link if journey URL is available
         // For experience pages, the journey URL should be relative to the experience folder
-        if (result.journeyUrl) {
-            const backLink = document.querySelector('.back-link');
-            if (backLink) {
-                // Experience pages are in experiences/[name]/, so journey is 2 levels up
+        const backLink = document.querySelector('.back-link');
+        if (backLink) {
+            // Experience pages are in experiences/[name]/, so journey is 2 levels up
+            if (isPacificPath) {
+                backLink.href = '../../index.html';
+                backLink.textContent = 'Back to Pacific West Coast Journey';
+            } else {
                 backLink.href = '../../index.html';
                 backLink.textContent = 'Back to Brazilian Journey';
             }
@@ -80,7 +89,36 @@
     
     // Helper function to get URL for a stop based on its type
     function getUrlForStop(stop) {
-        if (!stop || !stop.type) {
+        if (!stop) {
+            return '#';
+        }
+        
+        // Check if it's a known partner (even if type is missing)
+        if (window.PARTNERS_DATA && window.PARTNERS_DATA[stop.slug]) {
+            if (stop.slug === 'founderhaus') {
+                return '../../../../partners/founderhaus/index.html';
+            } else {
+                return '../../../../partners/' + stop.slug + '/index.html';
+            }
+        }
+        
+        // Check if it's a known experience
+        if (stop.slug === 'slab-city-salvation-mountain' || stop.slug === 'winter-desert-gatherings') {
+            return '../' + stop.slug + '/index.html';
+        }
+        
+        if (stop.slug === 'itacare-cultural-experiences' || stop.slug === 'salvador-colonial-history' || stop.slug === 'jungle-johnny-amazon-tours' || stop.slug === 'cargo-boat-manaus-leticia') {
+            const slugToFolderMap = {
+                'itacare-cultural-experiences': 'itacare-cultural-immersion',
+                'salvador-colonial-history': 'salvador-colonial-history',
+                'jungle-johnny-amazon-tours': 'jungle-johnny-amazon-tours',
+                'cargo-boat-manaus-leticia': 'cargo-boat-manaus-leticia'
+            };
+            const folderName = slugToFolderMap[stop.slug] || stop.slug;
+            return '../' + folderName + '/index.html';
+        }
+        
+        if (!stop.type) {
             // Fallback: try to determine from slug
             if (stop.slug === 'founderhaus' || stop.slug === 'black-king-ilheus') {
                 return '../../../../partners/' + stop.slug + '/index.html';
@@ -95,6 +133,8 @@
         
         switch (stop.type) {
             case 'partner':
+                // Determine if it's Pacific or Brazilian path based on context
+                const isPacificPath = window.location.pathname.includes('/pacific-west-coast-path/');
                 if (stop.slug === 'founderhaus') {
                     return '../../../../partners/founderhaus/index.html';
                 } else {
@@ -110,7 +150,9 @@
                     'itacare-cultural-experiences': 'itacare-cultural-immersion',
                     'salvador-colonial-history': 'salvador-colonial-history',
                     'jungle-johnny-amazon-tours': 'jungle-johnny-amazon-tours',
-                    'cargo-boat-manaus-leticia': 'cargo-boat-manaus-leticia'
+                    'cargo-boat-manaus-leticia': 'cargo-boat-manaus-leticia',
+                    'slab-city-salvation-mountain': 'slab-city-salvation-mountain',
+                    'winter-desert-gatherings': 'winter-desert-gatherings'
                 };
                 const folderName = slugToFolderMap[stop.slug] || stop.slug;
                 return '../' + folderName + '/index.html';

@@ -7,19 +7,19 @@
 <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
 <!-- SEO Meta Tags -->
 <title>The Pacific West Coast Journey | Agroverse Cacao Journeys</title>
-<meta content="A journey from Washington's borderlands near Canada to the California desert near Mexico, visiting partner venues where communities gather around regenerative cacao. Following a path reminiscent of the Pacific Crest Trail, connecting gathering spaces across the Pacific West Coast." name="description"/>
+<meta content="A journey from Washington's borderlands near Canada to the California and Arizona desert, beginning in Spring (May) and culminating in Winter (Thanksgiving through end of winter). Visit partner venues where communities gather around regenerative cacao, following a path reminiscent of the Pacific Crest Trail." name="description"/>
 <link href="https://www.agroverse.shop/cacao-journeys/pacific-west-coast-path" rel="canonical"/>
 <!-- Open Graph / Facebook -->
 <meta content="website" property="og:type"/>
 <meta content="https://www.agroverse.shop/cacao-journeys/pacific-west-coast-path" property="og:url"/>
 <meta content="The Pacific West Coast Journey | Agroverse Cacao Journeys" property="og:title"/>
-<meta content="A journey from Washington's borderlands near Canada to the California desert near Mexico, visiting partner venues where communities gather around regenerative cacao. Following a path reminiscent of the Pacific Crest Trail." property="og:description"/>
+<meta content="A journey from Washington's borderlands near Canada to the California and Arizona desert, beginning in Spring (May) and culminating in Winter (Thanksgiving through end of winter). Visit partner venues where communities gather around regenerative cacao." property="og:description"/>
 <meta content="https://www.agroverse.shop/cacao-journeys/pacific-west-coast-path/assets/images/pacific-coast-highway.jpg" property="og:image"/><meta content="630" property="og:image:height"/><meta content="1200" property="og:image:width"/>
 <!-- Twitter -->
 <meta content="summary_large_image" property="twitter:card"/>
 <meta content="https://www.agroverse.shop/cacao-journeys/pacific-west-coast-path" property="twitter:url"/>
 <meta content="The Pacific West Coast Journey | Agroverse Cacao Journeys" property="twitter:title"/>
-<meta content="A journey from Washington's borderlands near Canada to the California desert near Mexico, visiting partner venues where communities gather around regenerative cacao. Following a path reminiscent of the Pacific Crest Trail." property="twitter:description"/>
+<meta content="A journey from Washington's borderlands near Canada to the California and Arizona desert, beginning in Spring (May) and culminating in Winter (Thanksgiving through end of winter). Visit partner venues where communities gather around regenerative cacao." property="twitter:description"/>
 <meta content="https://www.agroverse.shop/cacao-journeys/pacific-west-coast-path/assets/images/pacific-coast-highway.jpg" property="twitter:image"/>
 <!-- Favicon -->
 <link href="../../assets/images/logo/favicon-192x192.jpeg" rel="icon" sizes="192x192" type="image/jpeg"/>
@@ -333,6 +333,43 @@
             content: ' →';
         }
         
+        .experience-gatherings {
+            margin: 1rem 0;
+            padding: 1rem;
+            background: rgba(254, 252, 143, 0.2);
+            border-radius: 8px;
+            border-left: 3px solid var(--color-accent);
+        }
+        
+        .experience-gatherings h4 {
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            color: var(--color-primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .experience-gatherings ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .experience-gatherings li {
+            padding: 0.5rem 0;
+            color: var(--color-text);
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        .experience-gatherings li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--color-primary);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
         /* Footer */
         footer {
             background-color: var(--color-primary);
@@ -546,12 +583,12 @@
 </div>
 <section class="journey-hero">
 <h1>The Pacific West Coast Journey</h1>
-<p>A journey from Washington's borderlands near Canada to the California desert near Mexico, connecting communities through regenerative cacao. Following a path reminiscent of the Pacific Crest Trail, wander this journey to discover gathering spaces where mindful connection flourishes—from mountain gatherings to urban sanctuaries to desert retreats—each venue a waypoint on the journey of conscious transformation.</p>
+        <p>A journey from Washington's borderlands near Canada to the California and Arizona desert, connecting communities through regenerative cacao. Beginning in Spring (May) with the Okanogan Family Barter Faire and culminating in Winter (Thanksgiving period through end of winter) with desert gatherings, this seasonal migration follows a path reminiscent of the Pacific Crest Trail. Discover gathering spaces where mindful connection flourishes—from mountain gatherings to urban sanctuaries to winter desert retreats—each venue a waypoint on your journey of conscious transformation.</p>
 </section>
 <section class="content-section">
-<div class="intro-text">
-<p>This journey spans from Washington's borderlands near Canada to the California desert near Mexico, following a path reminiscent of the Pacific Crest Trail. Traveling through diverse landscapes and communities—from mountain gatherings to Pacific Northwest creative hubs, to California's coastal sanctuaries and desert retreats—each stop offers a unique space for gathering, reflection, and connection, all centered around the regenerative power of cacao.</p>
-</div>
+        <div class="intro-text">
+        <p>The journey begins in <strong>Spring (May)</strong> with the Okanogan Family Barter Faire in Washington and culminates in <strong>Winter (Thanksgiving period through end of winter)</strong> with desert gatherings in Arizona Quartzite, California's Salton Sea, and Joshua Tree areas. Traveling through diverse landscapes and communities—from mountain gatherings to Pacific Northwest creative hubs, to California's coastal sanctuaries and winter desert retreats—each stop offers a unique space for gathering, reflection, and connection, all centered around the regenerative power of cacao.</p>
+        </div>
 <div class="map-section">
 <div id="journey-map"></div>
 </div>
@@ -573,12 +610,12 @@
 <span class="stat-label">Route</span>
 </div>
 </div>
-<div class="journey-stops">
-<h2>The Journey</h2>
-<div id="journey-stops-list">
-<!-- Stops will be inserted here by JavaScript -->
-</div>
-</div>
+        <div class="journey-stops">
+        <h2>The Journey</h2>
+        <div id="journey-stops-list">
+        <!-- Stops will be inserted here by JavaScript -->
+        </div>
+        </div>
 </section>
 <footer id="contact">
 <div class="footer-content">
@@ -605,6 +642,7 @@
 <script crossorigin="" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="../../js/config.js"></script>
 <script src="../../js/partners-data.js"></script>
+<script src="../../js/pacific-path-data.js"></script>
 <script>
         document.addEventListener('DOMContentLoaded', function() {
         if (!window.PARTNERS_DATA) {
@@ -612,7 +650,7 @@
             return;
         }
         
-        // Filter partners to only include Seattle, Oregon, California, and Arizona
+        // Filter partners to only include Washington, Oregon, California, and Arizona
         function filterWestCoastPartners() {
             const filtered = {};
             const westCoastStates = ['Washington', 'Oregon', 'California', 'Arizona'];
@@ -660,16 +698,39 @@
             return km * 0.621371;
         }
         
-        // Filter and sort partners
+        // Filter and sort partners (excluding Ponderosa since it's part of an experience)
         const westCoastPartners = filterWestCoastPartners();
-        const sortedPath = sortNorthToSouth(westCoastPartners);
+        const sortedPath = sortNorthToSouth(westCoastPartners).filter(slug => slug !== 'the-ponderosa-slab-city');
         const stops = sortedPath.map(slug => {
             const partner = westCoastPartners[slug];
             return {
                 ...partner,
-                description: partner.description || `Experience regenerative cacao at ${partner.name}, a gathering space where communities come together in mindful connection.`
+                description: partner.description || `Experience regenerative cacao at ${partner.name}, a gathering space where communities come together in mindful connection.`,
+                isPartner: true,
+                type: 'partner',
+                url: `../../partners/${partner.slug}/index.html`
             };
         });
+        
+        // Add Slab City & Salvation Mountain experience (before Winter Desert)
+        if (window.PACIFIC_PATH_DATA && window.PACIFIC_PATH_DATA['slab-city-salvation-mountain']) {
+            const slabCityExperience = {
+                ...window.PACIFIC_PATH_DATA['slab-city-salvation-mountain'],
+                isPartner: false,
+                isExperience: true
+            };
+            stops.push(slabCityExperience);
+        }
+        
+        // Add winter desert experience as the final stop
+        if (window.PACIFIC_PATH_DATA && window.PACIFIC_PATH_DATA['winter-desert-gatherings']) {
+            const winterDesertExperience = {
+                ...window.PACIFIC_PATH_DATA['winter-desert-gatherings'],
+                isPartner: false,
+                isExperience: true
+            };
+            stops.push(winterDesertExperience);
+        }
         
         // Calculate day numbers for each stop
         function calculateDayNumbers() {
@@ -736,17 +797,28 @@
             // Add markers for each stop
             stops.forEach((stop, index) => {
                 const stopNumber = index + 1;
+                const isExperience = stop.isExperience || false;
                 const marker = L.marker([stop.lat, stop.lon])
                     .addTo(map)
-                    .bindPopup(`<b>Stop ${stopNumber}</b><br>${stop.name}<br>${stop.location}`);
+                    .bindPopup(`<b>Stop ${stopNumber}</b><br>${stop.name}<br>${stop.location}${isExperience ? '<br><em>Experience</em>' : ''}`);
                 
-                // Number the markers with sequential stop numbers
-                const icon = L.divIcon({
-                    className: 'custom-marker',
-                    html: `<div style="background: #3b3333; color: white; border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; font-weight: bold; border: 2px solid white; font-size: 12px;">${stopNumber}</div>`,
-                    iconSize: [30, 30],
-                    iconAnchor: [15, 15]
-                });
+                // Use star icon for experiences, numbered for partners
+                let icon;
+                if (isExperience) {
+                    icon = L.divIcon({
+                        className: 'custom-marker',
+                        html: `<div style="background: #fefc8f; color: #3b3333; border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; font-weight: bold; border: 2px solid #3b3333; font-size: 16px;">★</div>`,
+                        iconSize: [30, 30],
+                        iconAnchor: [15, 15]
+                    });
+                } else {
+                    icon = L.divIcon({
+                        className: 'custom-marker',
+                        html: `<div style="background: #3b3333; color: white; border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; font-weight: bold; border: 2px solid white; font-size: 12px;">${stopNumber}</div>`,
+                        iconSize: [30, 30],
+                        iconAnchor: [15, 15]
+                    });
+                }
                 marker.setIcon(icon);
             });
             
@@ -781,22 +853,38 @@
                 // Get arrival day from pre-calculated day numbers
                 const arrivalDay = dayNumbers[index];
                 
-                // Determine image path - try .jpeg first, then .jpg
-                const imageExt = stop.slug === 'hacker-dojo' || stop.slug === 'lumin-earth-apothecary' || stop.slug === 'republic-cafe-and-ming-lounge' ? 'jpeg' : 'jpg';
-                const imagePath = `../../assets/partners/headers/${stop.slug}-header.${imageExt}`;
+                // Determine image path
+                let imagePath;
+                if (stop.isExperience) {
+                    imagePath = stop.image || '../../assets/partners/headers/winter-desert-gatherings-header.jpg';
+                } else {
+                    // Special case for Prism Percussions - use photo with Jenifer Runnion
+                    if (stop.slug === 'prism-percussions') {
+                        imagePath = '../../assets/partners/prism-percussions/me_with_jennifer_runnion.jpg';
+                    } else {
+                        const imageExt = stop.slug === 'hacker-dojo' || stop.slug === 'lumin-earth-apothecary' || stop.slug === 'republic-cafe-and-ming-lounge' ? 'jpeg' : 'jpg';
+                        imagePath = `../../assets/partners/headers/${stop.slug}-header.${imageExt}`;
+                    }
+                }
+                
+                // Determine if this is an experience or partner
+                const isExperience = stop.isExperience || false;
+                const borderColor = isExperience ? 'var(--color-accent)' : 'var(--color-primary)';
+                const stopUrl = stop.url || (isExperience ? `experiences/${stop.slug}/index.html` : `../../partners/${stop.slug}/index.html`);
                 
                 html += `
-                    <div class="stop-item">
+                    <div class="stop-item" style="border-left-color: ${borderColor};">
                         <div class="stop-number">Day ${arrivalDay}</div>
                         <img src="${imagePath}" alt="${stop.name}" class="stop-image" onerror="this.style.display='none';"/>
                         <div class="stop-content">
-                            <h3><a href="../../partners/${stop.slug}/index.html">${stop.name}</a></h3>
+                            <h3><a href="${stopUrl}">${stop.name}</a></h3>
                             <div class="stop-location">📍 ${stop.location}</div>
+                            ${isExperience && stop.season ? `<div class="stop-location">🗓️ ${stop.season}</div>` : ''}
                             <div class="stop-description">
                                 ${stop.description || `Experience regenerative cacao at ${stop.name}, a gathering space where communities come together in mindful connection.`}
                             </div>
                             ${index > 0 ? `<span class="stop-distance">${distanceMiles.toFixed(1)} miles from previous stop (${travelDays > 0 ? travelDays + ' day' + (travelDays > 1 ? 's' : '') + ' travel' : 'same day'})</span>` : '<span class="stop-distance">Starting point</span>'}
-                            <div><a href="../../partners/${stop.slug}/index.html" class="stop-link">Visit Partner Page</a></div>
+                            <div><a href="${stopUrl}" class="stop-link">Visit ${isExperience ? 'Experience' : 'Partner'} Page</a></div>
                         </div>
                     </div>
                 `;
