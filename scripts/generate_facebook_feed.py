@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 """
-Generate Facebook Product Feed (TSV and XML) from products.js
+Generate Facebook Product Feed XML from products.js
 
 This script:
 1. Reads products from js/products.js
-2. Generates Facebook-compatible product feeds in both TSV and XML formats
-3. Outputs to facebook_product_feed.tsv and facebook_product_feed.xml
+2. Generates a Facebook-compatible product feed XML file
+3. Outputs to facebook_product_feed.xml
 
-Facebook Product Feed Requirements (TSV format):
+Facebook Product Feed Requirements (XML format):
 - id (required): Unique product identifier
 - title (required): Product name
 - description: Product description
@@ -23,7 +23,6 @@ Facebook Product Feed Requirements (TSV format):
 
 import re
 import json
-import csv
 import xml.etree.ElementTree as ET
 from xml.dom import minidom
 from pathlib import Path
@@ -31,7 +30,6 @@ from datetime import datetime
 
 BASE_DIR = Path(__file__).parent.parent
 PRODUCTS_JS_FILE = BASE_DIR / 'js' / 'products.js'
-OUTPUT_TSV_FILE = BASE_DIR / 'facebook_product_feed.tsv'
 OUTPUT_XML_FILE = BASE_DIR / 'facebook_product_feed.xml'
 BASE_URL = 'https://www.agroverse.shop'
 
@@ -153,78 +151,6 @@ def generate_description(product):
     
     return description
 
-def generate_tsv_feed(products):
-    """Generate Facebook product feed in TSV format (matches legacy WIX format)."""
-    # Facebook TSV feed columns (required and recommended fields)
-    columns = [
-        'id',                    # Required: Unique product identifier
-        'title',                 # Required: Product name
-        'description',           # Recommended: Product description
-        'link',                  # Required: Product page URL
-        'image_link',            # Required: Product image URL
-        'availability',          # Required: in stock / out of stock / preorder
-        'condition',             # Required: new / refurbished / used
-        'price',                 # Required: Price with currency (e.g., "25.00 USD")
-        'brand',                 # Recommended: Brand name
-        'google_product_category', # Recommended: Google product category ID
-        'product_type',         # Recommended: Product category/type
-        'custom_label_0',        # Optional: Farm name
-        'custom_label_1',       # Optional: Shipment ID
-    ]
-    
-    rows = []
-    
-    for product_id, product in products.items():
-        category = product.get('category', 'retail')
-        
-        # Price formatting
-        price = product.get('price', 0)
-        try:
-            price_float = float(price) if price else 0.0
-            if price_float > 0:
-                price_str = format_price(price_float)
-            else:
-                price_str = '0.00 USD'  # Placeholder for wholesale
-        except (ValueError, TypeError):
-            price_str = '0.00 USD'
-        
-        # Availability
-        availability = 'in stock'
-        
-        # Image URL
-        image_path = product.get('image', '')
-        image_url = get_image_url(image_path) if image_path else ''
-        
-        # Description
-        description = generate_description(product)
-        
-        row = {
-            'id': product_id,
-            'title': product.get('name', ''),
-            'description': description,
-            'link': get_product_url(product_id),
-            'image_link': image_url,
-            'availability': availability,
-            'condition': 'new',
-            'price': price_str,
-            'brand': 'Agroverse',
-            'google_product_category': '357',  # Food, Beverages & Tobacco > Food Items > Snack Foods
-            'product_type': category.title() if category else '',
-            'custom_label_0': product.get('farm', ''),
-            'custom_label_1': product.get('shipment', ''),
-        }
-        
-        rows.append(row)
-    
-    # Write TSV file
-    print(f"Writing TSV feed to {OUTPUT_TSV_FILE}...")
-    with open(OUTPUT_TSV_FILE, 'w', encoding='utf-8', newline='') as f:
-        writer = csv.DictWriter(f, fieldnames=columns, delimiter='\t', extrasaction='ignore')
-        writer.writeheader()
-        writer.writerows(rows)
-    
-    print(f"✅ Generated TSV feed: {OUTPUT_TSV_FILE}")
-
 def generate_xml_feed(products):
     """Generate Facebook product feed in XML format."""
     # Create XML structure
@@ -316,26 +242,22 @@ def generate_xml_feed(products):
     print(f"✅ Generated XML feed: {OUTPUT_XML_FILE}")
 
 def generate_facebook_feed():
-    """Generate Facebook product feeds in both TSV and XML formats."""
+    """Generate Facebook product feed in XML format."""
     print(f"Reading products from {PRODUCTS_JS_FILE}...")
     products = parse_products_js()
     
     print(f"Found {len(products)} products\n")
     
-    # Generate both TSV (legacy format) and XML feeds
-    generate_tsv_feed(products)
+    # Generate XML feed
     generate_xml_feed(products)
     
-    print(f"\n✅ Successfully generated Facebook product feeds with {len(products)} products")
-    print(f"📄 TSV file: {OUTPUT_TSV_FILE}")
+    print(f"\n✅ Successfully generated Facebook product feed with {len(products)} products")
     print(f"📄 XML file: {OUTPUT_XML_FILE}")
-    print(f"🌐 TSV Feed URL: {BASE_URL}/facebook_product_feed.tsv")
-    print(f"🌐 XML Feed URL: {BASE_URL}/facebook_product_feed.xml")
+    print(f"🌐 Feed URL: {BASE_URL}/facebook_product_feed.xml")
     print("\nNext steps:")
-    print("1. Commit and push both feed files to GitHub")
+    print("1. Commit and push the XML file to GitHub")
     print("2. In Facebook Commerce Manager, add a data source")
-    print("3. Use the TSV feed URL (matches legacy format): https://www.agroverse.shop/facebook_product_feed.tsv")
-    print("   OR use the XML feed URL: https://www.agroverse.shop/facebook_product_feed.xml")
+    print("3. Use the feed URL: https://www.agroverse.shop/facebook_product_feed.xml")
 
 if __name__ == '__main__':
     try:
